@@ -2,6 +2,7 @@
 @section('title' , 'Servicios')
 
 @section('content')
+    @include('common.error')
     <form class="form-group" action="/services" method="post">
         @csrf
         <div class="form-group">
