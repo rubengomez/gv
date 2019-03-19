@@ -4,6 +4,7 @@ namespace Garro\Http\Controllers;
 
 use Garro\Service;
 use Illuminate\Http\Request;
+use Garro\Http\Requests\StoreServiceRequest;
 
 class ServiceController extends Controller
 {
@@ -36,14 +37,15 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreServiceRequest $request)
     {
+
         $service = new Service();
         $service->key = $request->input('key');
         $service->name = $request->input('name');
         $service->save();
 
-        return redirect()->route('services.index');
+        return redirect()->route('services.index')->with('status', 'Servicio creado exitosamente');
     }
 
     /**
