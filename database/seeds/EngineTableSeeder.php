@@ -17,10 +17,10 @@ class EngineTableSeeder extends Seeder
 
     public function createEngine(){
         $engines = [
-            ['name' => 'Engine1'],
-            ['name' => 'Engine2'],
-            ['name' => 'Engine3'],
-            ['name' => 'Engine4']
+            ['name' => 'Indefinido'],
+            ['name' => 'Disel'],
+            ['name' => 'Gasolina'],
+            ['name' => 'Gas']
         ];
         foreach ($engines as $e) {
             $engines = Engine::create([

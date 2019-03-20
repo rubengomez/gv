@@ -17,10 +17,14 @@ class ServiceTableSeeder extends Seeder
 
     public function createServices(){
         $services = [
-            ['key' => 's1',     'name' => 'service1'],
-            ['key' => 's2',     'name' => 'service2'],
-            ['key' => 's3',     'name' => 'service3'],
-            ['key' => 's4',     'name' => 'service4']
+            ['key' =>'CG','name' =>'Carga General'],
+            ['key' =>'P','name' =>'Pasaje'],
+            ['key' =>'T','name' =>'Turismo'],
+            ['key' =>'PQ','name' =>'Paquetería'],
+            ['key' =>'MP','name' =>'Materiales Peligrosos/Carga Especializada'],
+            ['key' =>'M','name' =>'Automóviles si rodar/Carga Especializada'],
+            ['key' =>'FV','name' =>'Fondos y Valores/Carga Especializada'],
+            ['key' =>'G','name' =>'Grúas de Arrastre/Salvamento']
         ];
         foreach ($services as $s) {
             $service = Service::create([
