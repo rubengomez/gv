@@ -21,6 +21,13 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('card-components', require('./components/CardComponents.vue').default);
+Vue.component('add-pokemon-btn', require('./components/AddPokemonComponent.vue').default);
+Vue.component('modal-component', require('./components/CreatePokemonComponent.vue').default);
+Vue.component('add-role-modal', require('./components/modal/AddRoleModal.vue').default);
+Vue.component('data-modal', require('./components/modal/DataModalComponent.vue').default);
+Vue.component('table-component', require('./components/table.vue').default);
+Vue.component('roles-table', require('./components/table/RolesTable.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

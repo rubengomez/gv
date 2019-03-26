@@ -2,6 +2,7 @@
 
 namespace Garro\Http\Controllers;
 
+use Garro\Engine;
 use Illuminate\Http\Request;
 
 class EngineController extends Controller
@@ -13,7 +14,9 @@ class EngineController extends Controller
      */
     public function index()
     {
-        //
+        $engine = Engine::all();
+
+        return view('engines.index', compact('engine'));
     }
 
     /**

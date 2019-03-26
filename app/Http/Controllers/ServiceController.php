@@ -15,6 +15,13 @@ class ServiceController extends Controller
      */
     public function index(Request $request)
     {
+        if ($request->ajax()) {
+            return response()->json([
+                ['id'=> 1, 'key'=> 's1', 'name'=>'service1'],
+                ['id'=> 2, 'key'=> 's2', 'name'=>'service2'],
+                ['id'=> 3, 'key'=> 's3', 'name'=>'service3']
+            ]);
+        }
         $request->user()->authorizeRoles('Admin');
 
         $services = Service::all();

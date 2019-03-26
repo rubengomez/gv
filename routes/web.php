@@ -20,18 +20,19 @@ Route::get('/login', function () {
 });
 
 Route::get('/mi_primer_ruta', function(){
-    return 'Hello World';
+    return view('test.index');
 });
 
 Route::get('/name/{name}', function($name){
     return 'Hello World '.$name;
 });
 
-Route::get('/prueba', 'pruebaController@prueba');
-
 Route::resource('users', 'UserController');
-
 Route::resource('services', 'ServiceController');
+Route::resource('axes', 'AxesController');
+Route::resource('engines', 'EngineController');
+Route::resource('roles', 'RoleController');
+
 
 Auth::routes();
 

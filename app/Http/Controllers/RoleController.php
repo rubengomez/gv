@@ -3,6 +3,7 @@
 namespace Garro\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Garro\Role;
 
 class RoleController extends Controller
 {
@@ -11,9 +12,14 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        /*if ($request->ajax()) {
+            $roles = Role::all();
+            return response()->json($roles,200);
+        }*/
+        $roles = Role::all();
+        return view('role.index', compact('roles'));
     }
 
     /**
@@ -34,7 +40,17 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $role = new Role();
+            $role->name = $request->input('name');
+            $role->description = $request->input('description');
+            $role->save();
+
+            return response()->json([
+                "message" => "Rol creado correctamente.",
+                "role" =>$role
+            ],200);
+        }
     }
 
     /**
@@ -68,7 +84,15 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $role = Role::find($id);
+        $role->name = $request->input('name');
+        $role->description = $request->input('description');
+        $role->save();
+
+        return response()->json([
+            "message" => "Rol actualizado correctamente.",
+            "role" =>$role
+        ],200);
     }
 
     /**
@@ -79,6 +103,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $role = Role::find($id);
+        $role->delete();
     }
 }

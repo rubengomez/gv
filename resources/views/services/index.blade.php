@@ -9,4 +9,6 @@
         <p>{{$service->name}}</p>
         <a href="/services/{{$service->id}}" class="btn btn-primary">mas</a>
     @endforeach
+    <card-components>
+    </card-components>
 @endsection
