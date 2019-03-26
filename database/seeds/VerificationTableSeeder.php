@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Garro\Verification;
+use Garro\Test;
+use Garro\Vehicle;
+use Garro\User;
+use Garro\Rejection;
 
 class VerificationTableSeeder extends Seeder
 {
@@ -12,7 +17,7 @@ class VerificationTableSeeder extends Seeder
     public function run()
     {
         $this->createVerification();
-    
+
     }
 
     public function createVerification(){
@@ -26,23 +31,23 @@ class VerificationTableSeeder extends Seeder
             'test_id'                => '1',
             'vehicle_id'             => '1',
             'tech_id'                => '1',
-            'reject_id'              => 'null']
+            'reject_id'              => '1' ],
         ];
 
         foreach($verifications as $ver){
-         $verifications= Verification::create(
-             ['date_last_verification'=> $v['date_last_verification'],
-             'date_verification'      => $v['date_verification'],
-             'odometre'               => $v['odometre'],
-             'verication_result'      => $v['verication_result'],
-             'cetificate_number'      => $v['cetificate_number'],
-             'test_id'                => $v['test_id'],
-             'vehicle_id'             => $v['vehicle_id'],
-             'tech_id'                => $v['tech_id'],
-             'reject_id'              => $v['reject_id'],]
-         );
+         $verification = Verification::create([
+             'date_last_verification' => $ver['date_last_verification'],
+             'date_verification' => $ver['date_verification'],
+             'odometre' => $ver['odometre'],
+             'verication_result' => $ver['verication_result'],
+             'cetificate_number' => $ver['cetificate_number'],
+             'test_id' => $ver['test_id'],
+             'vehicle_id' => $ver['vehicle_id'],
+             'tech_id' => $ver['tech_id'],
+             'reject_id' => $ver['reject_id'],
+         ]);
 
         }
 
-    } 
+    }
 }

@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Garro\Rejection;
 
-class RejectionTableSeeder extends Seeder
+class RejectionsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,20 +12,19 @@ class RejectionTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->createRejection();
+        $this->createRejections();
     }
- 
-    public function createRejection(){
-        
-        $rejections=[          
-            ['name' =>'Sistema de iluminación lámparas y luces'],																			
+
+    public function createRejections(){
+        $rejections=[
+            ['name' =>'Sistema de iluminación lámparas y luces'],
             ['name' =>'Indicadores de peligro para carga sobresaliente'],
-            ['name' =>'Limpiaparabrisas'],	
+            ['name' =>'Limpiaparabrisas'],
             ['name' =>'Parabrisas'],
             ['name' =>'Llantas, cámaras y corbatas'],
             ['name' =>'Ruedas y rines'],
             ['name' =>'Bastidor, largueros o chasis del camión o tractocamión'],
-            ['name' =>'Carrocería de semirremolque y/o remolque'],	
+            ['name' =>'Carrocería de semirremolque y/o remolque'],
             ['name' =>'Sistema de combustible'],
             ['name' =>'Sujeción de la carga'],
             ['name' =>'Sistema de escape'],
@@ -33,20 +33,15 @@ class RejectionTableSeeder extends Seeder
             ['name' =>'Sistema de frenos neumáticos'],
             ['name' =>'Sistema de frenos hidráulicos'],
             ['name' =>'Sistema de frenos eléctricos'],
-            ['name' =>'Sistema de acoplamiento'],	
+            ['name' =>'Sistema de acoplamiento'],
             ['name' =>'Cabina'],
             ['name' =>'Area de pasajeros en autobúses'],
             ['name' =>'Especificaciones complementarias y posibles defectos en vehículos que transportan materiales y residuos peligrosos']
         ];
-
         foreach ($rejections as $r) {
-            $rejections = Engine::create([
-                'name' => $r['name'],
+            $rejection = Rejection::create([
+                'name' => $r['name']
             ]);
-            # code...
         }
-
     }
-
-
 }
