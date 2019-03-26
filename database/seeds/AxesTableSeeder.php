@@ -19,7 +19,7 @@ class AxesTableSeeder extends Seeder
         $axes = [
             ['key' =>'B2','name' =>'Autobús de dos ejes'],
             ['key' =>'B3','name' =>'Autobús de tres ejes'],
-            ['key' =>'B4','name' =>'Autobús de cuatro ejes'], 
+            ['key' =>'B4','name' =>'Autobús de cuatro ejes'],
             ['key' =>'C2','name' =>'Camión de dos ejes'],
             ['key' =>'C3','name' =>'Camión de tres ejes'],
             ['key' =>'C4','name' =>'Camión de cuatro ejes'],

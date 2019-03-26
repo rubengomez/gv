@@ -36,13 +36,13 @@ class VehicleTableSeeder extends Seeder
              'model' => 'Centra',
              'series' => 'Serie2',
              'plate_number' => 'pl2car2',
-             'folio_circulation' => 
+             'folio_circulation' =>
              'folcir1234','capacity' => '200 kg',
              'axes_id' => '2',
              'engine_id' => '2',
              'service_id' => '2',
              'user_id' => '2'],
-             
+
 		   ['brand' => 'FREIGHTLINER',
             'model' => '1999',
             'series' => '1FUWTMCA9XHB43940',
@@ -86,7 +86,7 @@ class VehicleTableSeeder extends Seeder
             'engine_id' => '1',
             'service_id' => '6',
             'user_id' => '1'],
-         
+
           ['brand' => 'FREIGHTLINER',
            'model' => '1985',
            'series' => '1FUEYBYB0FP265932',

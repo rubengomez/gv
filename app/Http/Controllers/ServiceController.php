@@ -4,6 +4,7 @@ namespace Garro\Http\Controllers;
 
 use Garro\Service;
 use Illuminate\Http\Request;
+use Garro\Http\Requests\StoreServiceRequest;
 
 class ServiceController extends Controller
 {
@@ -14,6 +15,13 @@ class ServiceController extends Controller
      */
     public function index(Request $request)
     {
+        if ($request->ajax()) {
+            return response()->json([
+                ['id'=> 1, 'key'=> 's1', 'name'=>'service1'],
+                ['id'=> 2, 'key'=> 's2', 'name'=>'service2'],
+                ['id'=> 3, 'key'=> 's3', 'name'=>'service3']
+            ]);
+        }
         $request->user()->authorizeRoles('Admin');
 
         $services = Service::all();
@@ -36,14 +44,15 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreServiceRequest $request)
     {
+
         $service = new Service();
         $service->key = $request->input('key');
         $service->name = $request->input('name');
         $service->save();
 
-        return redirect()->route('services.index');
+        return redirect()->route('services.index')->with('status', 'Servicio creado exitosamente');
     }
 
     /**
