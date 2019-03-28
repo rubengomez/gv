@@ -14,12 +14,9 @@ class AxesController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            $axes = Axes::all();
-            return response()->json($axes,200);
-        }
-
-        return view('axes.index');
+       
+        $axes = Axes::all();
+        return view('setting.axes.index', compact('axes'));
     }
 
     /**
@@ -47,7 +44,7 @@ class AxesController extends Controller
             $axes->save();
 
             return response()->json([
-                "message" => "Pokemon creado correctamente.",
+                "message" => "Eje Creado Correctamente.",
                 "axes" =>$axes
             ],200);
         }
@@ -84,7 +81,15 @@ class AxesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $axes = Axes::find($id);
+        $axes->name=$request->input('name');
+        $axes->description=$request->input('description');
+        $axes->save();
+
+        return response()->json([
+            "message" => "Eje Actualizado Correctamente.",
+            "axes" =>$axes
+        ],200);
     }
 
     /**
@@ -95,6 +100,7 @@ class AxesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $axes = Axes::find($id);
+        $axes->delete();
     }
 }

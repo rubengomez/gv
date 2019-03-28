@@ -24,11 +24,18 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('card-components', require('./components/CardComponents.vue').default);
 Vue.component('add-pokemon-btn', require('./components/AddPokemonComponent.vue').default);
 Vue.component('modal-component', require('./components/CreatePokemonComponent.vue').default);
+Vue.component('buton-component', require('./components/AddPokemonComponent.vue').default);
 Vue.component('add-role-modal', require('./components/modal/AddRoleModal.vue').default);
 Vue.component('data-modal', require('./components/modal/DataModalComponent.vue').default);
 Vue.component('table-component', require('./components/table.vue').default);
 Vue.component('roles-table', require('./components/table/RolesTable.vue').default);
-
+Vue.component('axes-table', require('./components/table/AxesTable.vue').default);
+Vue.component('engines-table', require('./components/table/EnginesTable.vue').default);
+Vue.component('services-table', require('./components/table/ServicesTable.vue').default);
+Vue.component('tests-table', require('./components/table/TestsTable.vue').default);
+Vue.component('rejections-table', require('./components/table/RejectionsTable.vue').default);
+Vue.component('vehicle-table', require('./components/table/VehicleTable.vue').default);
+/**
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
