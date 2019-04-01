@@ -16,7 +16,7 @@ class EngineController extends Controller
     {
         $engine = Engine::all();
 
-        return view('engines.index', compact('engine'));
+        return view('setting.engines.index', compact('engine'));
     }
 
     /**
@@ -37,7 +37,16 @@ class EngineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $engine = new Engine();
+            $engine->name = $request->input('name');
+            $engine->save();
+
+            return response()->json([
+                "message" => "Motor Creado Correctamente.",
+                "Engine" =>$engine
+            ],200);
+        }
     }
 
     /**
@@ -71,7 +80,14 @@ class EngineController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $engine = Engine::find($id);
+        $engine->name = $request->input('name');
+        $engine->save();
+
+        return response()->json([
+            "message" => "Motor Actualizado Correctamente.",
+            "Engine" =>$engine
+        ],200);//
     }
 
     /**
@@ -82,6 +98,7 @@ class EngineController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $engine = Engine ::find($id);
+        $engine->delete();
     }
 }

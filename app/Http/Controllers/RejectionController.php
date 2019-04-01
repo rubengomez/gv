@@ -1,23 +1,20 @@
 <?php
 
 namespace Garro\Http\Controllers;
-
-use Garro\Service;
+use Garro\Rejection;
 use Illuminate\Http\Request;
-use Garro\Http\Requests\StoreServiceRequest;
 
-class ServiceController extends Controller
+class RejectionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-       
-        $services = Service::all();
-        return view('setting.services.index', compact('services'));
+        $rejects = Rejection::all();
+        return view('setting.rejects.index', compact('rejects'));
     }
 
     /**
@@ -27,7 +24,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('services.create');
+        //
     }
 
     /**
@@ -36,15 +33,18 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreServiceRequest $request)
+    public function store(Request $request)
     {
+        if ($request->ajax()) {
+            $rejects = new Rejects();
+            $rejects->name = $request->input('name');
+            $rejects->save();
 
-        $service = new Service();
-        $service->key = $request->input('key');
-        $service->name = $request->input('name');
-        $service->save();
-
-        return redirect()->route('services.index')->with('status', 'Servicio creado exitosamente');
+            return response()->json([
+                "message" => "Rechazo Creado Correctamente.",
+                "reject" =>$rejects
+            ],200);
+        }
     }
 
     /**
@@ -55,9 +55,7 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        $service = Service::find($id);
-
-        return $service;
+        //
     }
 
     /**
@@ -68,7 +66,7 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        return 'hola';
+        //
     }
 
     /**
@@ -80,7 +78,14 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rejects = Rejects::find($id);
+        $rejects->name = $request->input('name');
+        $rejects->save();
+
+        return response()->json([
+            "message" => "Rechazo Actualizado Correctamente.",
+            "reject" =>$rejects
+        ],200);
     }
 
     /**
@@ -91,6 +96,7 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $rejects = Rejects::find($id);
+        $rejects->delete();
     }
 }
