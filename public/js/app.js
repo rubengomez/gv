@@ -2015,6 +2015,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 Vue.component('my-detail-row', _DetailRow__WEBPACK_IMPORTED_MODULE_1__["default"]);
@@ -40886,95 +40890,8 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("vuetable", {
-    ref: "vuetable",
-    attrs: {
-      "detail-row-component": "my-detail-row",
-      "api-url": "https://vuetable.ratiw.net/api/users",
-      fields: [
-        "name",
-        "email",
-        "birthdate",
-        "nickname",
-        "gender",
-        {
-          name: "__slot:actions",
-          title: "Slot Actions",
-          titleClass: "center aligned",
-          dataClass: "center aligned"
-        }
-      ]
-    },
-    on: { "vuetable:cell-clicked": _vm.onCellClicked },
-    scopedSlots: _vm._u([
-      {
-        key: "actions",
-        fn: function(props) {
-          return [
-            _c("div", { staticClass: "custom-actions" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-info",
-                  on: {
-                    click: function($event) {
-                      return _vm.onAction(
-                        "view-item",
-                        props.rowData,
-                        props.rowIndex
-                      )
-                    }
-                  }
-                },
-                [_c("i", { staticClass: "icon ion-md-search" })]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-info",
-                  on: {
-                    click: function($event) {
-                      return _vm.onAction(
-                        "edit-item",
-                        props.rowData,
-                        props.rowIndex
-                      )
-                    }
-                  }
-                },
-                [_c("i", { staticClass: "icon ion-md-create" })]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-danger",
-                  on: {
-                    click: function($event) {
-                      return _vm.onAction(
-                        "delete-item",
-                        props.rowData,
-                        props.rowIndex
-                      )
-                    }
-                  }
-                },
-                [_c("i", { staticClass: "icon ion-md-trash" })]
-              )
-            ])
-          ]
-        }
-      }
-    ])
-  })
-}
+var render = function () {}
 var staticRenderFns = []
-render._withStripped = true
 
 
 
