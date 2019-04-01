@@ -1,23 +1,21 @@
 <?php
 
 namespace Garro\Http\Controllers;
-
-use Garro\Service;
+use Garro\Test;
 use Illuminate\Http\Request;
-use Garro\Http\Requests\StoreServiceRequest;
 
-class ServiceController extends Controller
+
+class TestsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-       
-        $services = Service::all();
-        return view('setting.services.index', compact('services'));
+        $tests = Test::all();
+        return view('setting.tryouts.index', compact('tests'));
     }
 
     /**
@@ -27,7 +25,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('services.create');
+        //
     }
 
     /**
@@ -36,15 +34,18 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreServiceRequest $request)
+    public function store(Request $request)
     {
+        if ($request->ajax()) {
+            $tests = new Test();
+            $tests->name = $request->input('name');
+            $tests->save();
 
-        $service = new Service();
-        $service->key = $request->input('key');
-        $service->name = $request->input('name');
-        $service->save();
-
-        return redirect()->route('services.index')->with('status', 'Servicio creado exitosamente');
+            return response()->json([
+                "message" => "Prueba Creada Correctamente.",
+                "role" =>$tests
+            ],200);
+        }
     }
 
     /**
@@ -55,9 +56,7 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        $service = Service::find($id);
-
-        return $service;
+        //
     }
 
     /**
@@ -68,7 +67,7 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        return 'hola';
+        //
     }
 
     /**
@@ -80,7 +79,14 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+            $tests =Test::find($id);
+            $tests->name = $request->input('name');
+            $tests->save();
+
+            return response()->json([
+                "message" => "Prueba Actualizada Correctamente.",
+                "role" =>$tests
+            ],200);
     }
 
     /**
@@ -91,6 +97,7 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tests =Test::find($id);
+        $tests ->delete();
     }
 }

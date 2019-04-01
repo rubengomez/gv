@@ -1,8 +1,9 @@
 <?php
 
 namespace Garro\Http\Controllers;
-
+use Garro\Vehicle;
 use Illuminate\Http\Request;
+
 
 class VehicleController extends Controller
 {
@@ -13,7 +14,8 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
+        $vehicle = Vehicle::all();
+        return view('vehicles.index', compact('vehicle'));
     }
 
     /**
@@ -34,6 +36,25 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->ajax()) {
+            $vehicle = new Vehicle();
+            $vehicle->brand = $request->input('brand'); 
+            $vehicle->model = $request->input('model'); 
+            $vehicle->series = $request->input('series'); 
+            $vehicle->plate_number = $request->input('plate_number'); 
+            $vehicle->folio_circulation = $request->input('folio_circulation'); 
+            $vehicle->capacity = $request->input('capacity'); 
+            $vehicle->axes_id = $request->input('axes_id'); 
+            $vehicle->engine_id = $request->input('engine_id'); 
+            $vehicle->service_id = $request->input('service_id'); 
+            $vehicle->user_id = $request->input('user_id');
+            $vehicle->save();
+
+            return response()->json([
+                "message" => "Vehiculo Creado Correctamente.",
+                "vehicle" =>$vehicle
+            ],200);
+        }
         //
     }
 
@@ -68,7 +89,22 @@ class VehicleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $vehicle = Vehicle::find($id);
+        $vehicle->brand = $request->input('brand'); 
+        $vehicle->model = $request->input('model'); 
+        $vehicle->series = $request->input('series'); 
+        $vehicle->plate_number = $request->input('plate_number');             $vehicle->folio_circulation = $request->input('folio_circulation'); 
+        $vehicle->capacity = $request->input('capacity'); 
+        $vehicle->axes_id = $request->input('axes_id'); 
+        $vehicle->engine_id = $request->input('engine_id'); 
+        $vehicle->service_id = $request->input('service_id'); 
+        $vehicle->user_id = $request->input('user_id');  
+        $role->save();
+
+        return response()->json([
+            "message" => "Vehiculo Actualizado Correctamente.",
+            "vehicle" =>$vehicle
+        ],200);
     }
 
     /**
@@ -79,6 +115,7 @@ class VehicleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $vehicle = Vehicle::find($id);
+        $vehicle->delete();
     }
 }

@@ -18,7 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
     <div id="app">
@@ -50,9 +50,40 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="/services">{{ __('Servicios') }}</a>
-                            </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="">{{ __('Agenda') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">{{ __('Clientes') }}</a>
+                        </li> 
+                        <li class="nav-item">
+                             <a class="nav-link" href="">{{ __('Formularios') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">{{ __('Reportes') }}</a>
+                        </li>
+                               
+                        <li class="nav-item">
+                            <a class="nav-link" href="/verify">{{ __('Verificaciones') }}</a>
+                        </li>   
+                        <li class="nav-item">
+                            <a class="nav-link" href="/vehicles">{{ __('Vehiculos') }}</a>
+                        </li>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Configuraciones <span class="caret"></span>
+                            </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/axes">{{ __('Ejes') }}</a>
+                            <a class="dropdown-item" href="/engines">{{ __('Motores') }}</a>
+                            <a class="dropdown-item" href="/tests">{{ __('Pruebas') }}</a>
+                            <a class="dropdown-item" href="/rejects">{{ __('Rechazos') }}</a>
+                            <a class="dropdown-item" href="/roles">{{ __('Roles') }}</a>
+                            <a class="dropdown-item" href="/services">{{ __('Servicios') }}</a>      
+                            </div>
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

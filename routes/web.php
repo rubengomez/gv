@@ -32,7 +32,10 @@ Route::resource('services', 'ServiceController');
 Route::resource('axes', 'AxesController');
 Route::resource('engines', 'EngineController');
 Route::resource('roles', 'RoleController');
-
+Route::resource('tests', 'TestsController');
+Route::resource('vehicles', 'VehicleController');
+Route::resource('rejects', 'RejectionController');
+Route::resource('verify', 'VerificationController');
 
 Auth::routes();
 

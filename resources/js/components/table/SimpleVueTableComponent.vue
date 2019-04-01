@@ -5,16 +5,16 @@
         :fields="this.fields"
         :data="this.data"
         >
-        <template slot="actions" scope="props">
+        <template slot="actions" slot-scope="props">
             <div class="custom-actions">
               <button class="btn btn-outline-info"
                 @click="onAction(props.rowData, props.rowIndex)"
                 data-toggle="modal" data-target="#addPokemon">
-                <i class="icon ion-md-create"></i>
+                <i class="fas fa-pencil-alt"></i>
               </button>
               <button class="btn btn-outline-danger"
                 @click="onDelete(props.rowData.id,props.rowIndex)">
-                <i class="icon ion-md-trash"></i>
+                <i class="fas fa-trash-alt"></i>
               </button>
             </div>
         </template>
