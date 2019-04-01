@@ -2113,66 +2113,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      n1: null,
-      variables: this.fields,
-      identificador: null
+      ObjectEdit: null,
+      titulos: this.titles,
+      id: null,
+      objeto: this.objetoProps
     };
   },
   props: {
     nameModal: String,
-    name: String,
-    description: String,
-    id: Number,
-    route: String,
-    fields: Array
+    titles: Array,
+    objetoProps: Object
   },
   created: function created() {
     var _this = this;
 
-    _even_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('role-edit', function (data) {
-      _this.name = data.name;
-      _this.description = data.description;
+    _even_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('object-edit', function (data) {
+      _this.ObjectEdit = Object.assign({}, data);
+      delete _this.ObjectEdit.created_at;
+      delete _this.ObjectEdit.updated_at;
+      delete _this.ObjectEdit.id;
       _this.id = data.id;
-      _this.identificador = data.id;
-      console.log(data);
-
-      _this.variables.forEach(function (elemento, indice, array) {
-        console.log('------BANDERA-----');
-        console.log(elemento, indice);
-      });
     });
   },
   methods: {
     saveModal: function saveModal() {
       if (this.id == null) {
-        axios.post(this.route, {
-          name: this.name,
-          description: this.description
-        }).then(function (res) {
-          console.log(res);
-          $('#dataModal').modal('hide');
-          _even_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('role-added', res.data.role);
-        }).catch(function (err) {
-          console.log(err);
-        });
+        _even_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('object-added', this.objeto);
       } else {
-        axios.put(this.route + '/' + this.id, {
-          name: this.name,
-          description: this.description
-        }).then(function (res) {
-          console.log(res);
-          $('#dataModal').modal('hide');
-          _even_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('role-update', res.data.role);
-        }).catch(function (err) {
-          console.log(err);
-        });
+        this.ObjectEdit.id = this.id;
+        _even_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('object-edited', this.ObjectEdit);
       }
 
       this.clearModal();
+      $('#dataModal').modal('hide');
     },
     clearModal: function clearModal() {
-      this.name = null;
-      this.description = null;
+      this.ObjectEdit = null;
       this.id = null;
     }
   }
@@ -2509,10 +2485,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'app',
+  data: function data() {
+    return {
+      objeto: [{
+        name: null,
+        description: null
+      }]
+    };
+  },
   props: {
     data: Array
   },
@@ -2522,13 +2512,31 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    _even_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('role-added', function (data) {
+    _even_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('object-added', function (data) {
+      axios.post('http://127.0.0.1:8000/roles', {
+        name: data.name,
+        description: data.description
+      }).then(function (res) {
+        console.log(res);
+      }).catch(function (err) {
+        console.log(err);
+      });
+
       _this.data.push(data);
     });
-    _even_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('role-del', function (index) {
+    _even_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('object-del', function (index) {
       _this.data.splice(index, 1);
     });
-    _even_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('role-update', function (data) {
+    _even_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('object-edited', function (data) {
+      console.log(data);
+      axios.put('http://127.0.0.1:8000/roles/' + data.id, {
+        name: data.name,
+        description: data.description
+      }).then(function (res) {
+        console.log(res);
+      }).catch(function (err) {
+        console.log(err);
+      });
       var indexActive = 0;
 
       _this.data.forEach(function (element, index) {
@@ -2659,7 +2667,8 @@ Vue.component('my-detail-row', _DetailRow__WEBPACK_IMPORTED_MODULE_1__["default"
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     data: Array,
-    fields: Array
+    fields: Array,
+    route: String
   },
   components: {
     Vuetable: vuetable_2_src_components_Vuetable__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -2668,12 +2677,12 @@ Vue.component('my-detail-row', _DetailRow__WEBPACK_IMPORTED_MODULE_1__["default"
     onAction: function onAction(data, index) {
       console.log('slot action: ' + data.name, data.description, index);
       this.indexActive = index;
-      _even_bus__WEBPACK_IMPORTED_MODULE_2__["default"].$emit('role-edit', data);
+      _even_bus__WEBPACK_IMPORTED_MODULE_2__["default"].$emit('object-edit', data);
     },
     onDelete: function onDelete(id, index) {
-      axios.delete('http://127.0.0.1:8000/roles/' + id).then(function (res) {
+      axios.delete(this.route + '/' + id).then(function (res) {
         console.log(res);
-        _even_bus__WEBPACK_IMPORTED_MODULE_2__["default"].$emit('role-del', index);
+        _even_bus__WEBPACK_IMPORTED_MODULE_2__["default"].$emit('object-del', index);
       }).catch(function (err) {
         console.log(err);
       });
@@ -41795,106 +41804,94 @@ var render = function() {
                 }
               },
               [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("h6", { staticClass: "text-left" }, [_vm._v("Nombre")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.name,
-                        expression: "name"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Ingresa el nombre del nuevo rol"
-                    },
-                    domProps: { value: _vm.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.name = $event.target.value
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("h6", { staticClass: "text-left" }, [
-                    _vm._v("Descripcion")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.description,
-                        expression: "description"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Ingresa la descripcion del nuevo rol"
-                    },
-                    domProps: { value: _vm.description },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.description = $event.target.value
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.variables, function(variable) {
-                  return _c("div", { staticClass: "form-group" }, [
-                    _c("h6", { staticClass: "text-left" }, [
-                      _vm._v(_vm._s(variable.title))
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: variable.value,
-                          expression: "variable.value"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Ingresa el nombre del nuevo rol"
-                      },
-                      domProps: { value: variable.value },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(variable, "value", $event.target.value)
-                        }
-                      }
-                    })
-                  ])
-                }),
+                this.id == null
+                  ? _c(
+                      "div",
+                      _vm._l(_vm.objetoProps, function(variable, key, index) {
+                        return _c("div", { staticClass: "form-group" }, [
+                          _c("h6", { staticClass: "text-left" }, [
+                            _vm._v(_vm._s(_vm.titulos[index]))
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.objetoProps[key],
+                                expression: "objetoProps[key]"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Ingresa un nuevo valor"
+                            },
+                            domProps: { value: _vm.objetoProps[key] },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.objetoProps,
+                                  key,
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      }),
+                      0
+                    )
+                  : _c(
+                      "div",
+                      _vm._l(_vm.ObjectEdit, function(variable, key, index) {
+                        return _c("div", { staticClass: "form-group" }, [
+                          _c("h6", { staticClass: "text-left" }, [
+                            _vm._v(_vm._s(_vm.titulos[index]))
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.ObjectEdit[key],
+                                expression: "ObjectEdit[key]"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Ingresa un nuevo valor"
+                            },
+                            domProps: { value: _vm.ObjectEdit[key] },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.ObjectEdit,
+                                  key,
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      }),
+                      0
+                    ),
                 _vm._v(" "),
                 _c(
                   "button",
                   { staticClass: "btn btn-primary", attrs: { type: "submit" } },
                   [_vm._v("Guardar")]
                 )
-              ],
-              2
+              ]
             )
           ])
         ])
@@ -42256,7 +42253,13 @@ var render = function() {
     "div",
     { attrs: { id: "table" } },
     [
-      _c("add-role-modal"),
+      _c("data-modal", {
+        attrs: {
+          nameModal: "Rol",
+          titles: ["Nombre", "Descripcion"],
+          objetoProps: this.objeto[0]
+        }
+      }),
       _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
@@ -42271,7 +42274,8 @@ var render = function() {
                 { name: "description", title: "Descripcion" },
                 { name: "__slot:actions", title: "Acciones" }
               ],
-              data: this.data
+              data: this.data,
+              route: "http://127.0.0.1:8000/roles"
             }
           })
         ],
@@ -42303,7 +42307,7 @@ var staticRenderFns = [
               attrs: {
                 href: "/services/create",
                 "data-toggle": "modal",
-                "data-target": "#addPokemon"
+                "data-target": "#dataModal"
               }
             },
             [_vm._v("Agregar +")]
@@ -42425,7 +42429,7 @@ var render = function() {
                   staticClass: "btn btn-outline-info",
                   attrs: {
                     "data-toggle": "modal",
-                    "data-target": "#addPokemon"
+                    "data-target": "#dataModal"
                   },
                   on: {
                     click: function($event) {

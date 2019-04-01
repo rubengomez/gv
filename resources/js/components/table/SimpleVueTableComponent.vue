@@ -9,7 +9,7 @@
             <div class="custom-actions">
               <button class="btn btn-outline-info"
                 @click="onAction(props.rowData, props.rowIndex)"
-                data-toggle="modal" data-target="#addPokemon">
+                data-toggle="modal" data-target="#dataModal">
                 <i class="fas fa-pencil-alt"></i>
               </button>
               <button class="btn btn-outline-danger"
@@ -31,7 +31,8 @@ import EvenBus from '../../even-bus'
 export default {
     props: {
         data: Array,
-        fields: Array
+        fields: Array,
+        route: String
     },
     components: {
         Vuetable
@@ -40,13 +41,13 @@ export default {
         onAction (data, index) {
           console.log('slot action: ' + data.name,data.description, index)
           this.indexActive = index
-          EvenBus.$emit('role-edit',data)
+          EvenBus.$emit('object-edit',data)
         },
         onDelete(id,index){
-            axios.delete('http://127.0.0.1:8000/roles/'+ id)
+            axios.delete(this.route+'/'+ id)
             .then(function(res){
                 console.log(res);
-                EvenBus.$emit('role-del',index)
+                EvenBus.$emit('object-del',index)
             })
             .catch(function(err){
                 console.log(err);

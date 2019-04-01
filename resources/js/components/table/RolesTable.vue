@@ -1,6 +1,11 @@
 <template>
   <div id="table">
-      <add-role-modal></add-role-modal>
+      <data-modal
+        :nameModal="'Rol'"
+        :titles="['Nombre','Descripcion']"
+        :objetoProps="this.objeto[0]"
+        >
+    </data-modal>
       <div class="container">
           <div class="row justify-content-between">
               <div class="col-4">
@@ -9,7 +14,7 @@
                       Roles</h3>
               </div>
               <div class="col-4">
-                  <a href="/services/create" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#addPokemon">Agregar +</a>
+                  <a href="/services/create" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#dataModal">Agregar +</a>
               </div>
           </div>
       </div>
@@ -19,7 +24,8 @@
             {name:'name', title: 'Nombre del Rol'},
             {name: 'description', title: 'Descripcion'},
             {name: '__slot:actions', title: 'Acciones'}]"
-          :data="this.data">
+          :data="this.data"
+          :route="'http://127.0.0.1:8000/roles'">
       </simple-vue-table>
     </div>
   </div>
@@ -31,6 +37,13 @@ import SimpleVueTable from './SimpleVueTableComponent'
 
 export default {
   name: 'app',
+  data(){
+      return{
+          objeto:[
+              {name:null,description:null}
+          ]
+      }
+  },
   props: {
       data: Array,
   },
@@ -38,13 +51,34 @@ export default {
     SimpleVueTable
 },
 created(){
-    EvenBus.$on('role-added', data => {
+    EvenBus.$on('object-added', data => {
+        axios.post('http://127.0.0.1:8000/roles',{
+            name: data.name,
+            description: data.description
+        })
+        .then(function(res){
+            console.log(res);
+        })
+        .catch(function(err){
+            console.log(err);
+        });
         this.data.push(data)
     })
-    EvenBus.$on('role-del', index => {
+    EvenBus.$on('object-del', index => {
         this.data.splice(index, 1);
     })
-    EvenBus.$on('role-update', data => {
+    EvenBus.$on('object-edited', data => {
+        console.log(data);
+        axios.put('http://127.0.0.1:8000/roles/'+data.id,{
+            name: data.name,
+            description: data.description
+        })
+        .then(function(res){
+            console.log(res);
+        })
+        .catch(function(err){
+            console.log(err);
+        });
         var indexActive = 0;
         this.data.forEach(function(element,index) {
             if (element.id == data.id) {
