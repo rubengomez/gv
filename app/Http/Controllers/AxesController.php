@@ -2,6 +2,7 @@
 
 namespace Garro\Http\Controllers;
 
+use Garro\Axes;
 use Illuminate\Http\Request;
 
 class AxesController extends Controller
@@ -11,9 +12,14 @@ class AxesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $axes = Axes::all();
+            return response()->json($axes,200);
+        }
+
+        return view('axes.index');
     }
 
     /**
@@ -34,7 +40,17 @@ class AxesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $axes = new Axes();
+            $axes->key = $request->input('key');
+            $axes->name = $request->input('name');
+            $axes->save();
+
+            return response()->json([
+                "message" => "Pokemon creado correctamente.",
+                "axes" =>$axes
+            ],200);
+        }
     }
 
     /**
