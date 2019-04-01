@@ -1,19 +1,13 @@
 <template>
-  <div id="table">
-    <div class="ui container">
-      <my-vuetable></my-vuetable>
-    </div>
-  </div>
+
 </template>
 
 <script>
-import MyVuetable from './MyVuetable'
+
 
 export default {
-  name: 'app',
-  components: {
-    MyVuetable
-  }
+
+
 }
 </script>
 
