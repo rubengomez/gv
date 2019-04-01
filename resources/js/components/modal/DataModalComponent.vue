@@ -11,18 +11,18 @@
       </div>
       <div class="modal-body">
       	<form @submit.prevent="saveModal">
-	        <div class="form-group">
-			    <h6 class="text-left">Nombre</h6>
-			    <input type="text" class="form-control" placeholder="Ingresa el nombre del nuevo rol" v-model="name">
-		  	</div>
-		  	<div class="form-group">
-			    <h6 class="text-left">Descripcion</h6>
-			    <input type="text" class="form-control" placeholder="Ingresa la descripcion del nuevo rol" v-model="description">
-		  	</div>
-            <div class="form-group" v-for="variable in variables">
-			    <h6 class="text-left">{{ variable.title }}</h6>
-			    <input type="text" class="form-control" placeholder="Ingresa el nombre del nuevo rol" v-model="variable.value">
-		  	</div>
+            <div v-if="this.id==null">
+                <div class="form-group" v-for="(variable, key,index) in objetoProps">
+                    <h6 class="text-left">{{ titulos[index] }}</h6>
+                    <input type="text" class="form-control" placeholder="Ingresa un nuevo valor" v-model="objetoProps[key]">
+                </div>
+            </div>
+            <div v-else>
+                <div class="form-group" v-for="(variable, key,index) in ObjectEdit">
+                    <h6 class="text-left">{{ titulos[index] }}</h6>
+                    <input type="text" class="form-control" placeholder="Ingresa un nuevo valor" v-model="ObjectEdit[key]">
+                </div>
+            </div>
 		  	<button type="submit" class="btn btn-primary">Guardar</button>
 	  	</form>
       </div>
@@ -35,66 +35,39 @@ import EvenBus from '../../even-bus'
 export default {
     data(){
         return{
-            n1:null,
-            variables:this.fields,
-            identificador:null
+            ObjectEdit:null,
+            titulos:this.titles,
+            id: null,
+            objeto:this.objetoProps
         }
     },
     props: {
         nameModal: String,
-        name: String,
-        description: String,
-        id: Number,
-        route: String,
-        fields:Array
+        titles:Array,
+        objetoProps: Object
     },
     created(){
-        EvenBus.$on('role-edit', data => {
-            this.name=data.name;
-            this.description=data.description;
+        EvenBus.$on('object-edit', data => {
+            this.ObjectEdit = Object.assign({}, data);
+            delete this.ObjectEdit.created_at;
+            delete this.ObjectEdit.updated_at;
+            delete this.ObjectEdit.id;
             this.id=data.id;
-            this.identificador=data.id;
-            console.log(data);
-            this.variables.forEach(function (elemento, indice, array) {
-                console.log('------BANDERA-----');
-    console.log(elemento, indice);
-});
         })
     },
     methods:{
         saveModal: function(){
             if (this.id==null) {
-                axios.post(this.route,{
-                    name: this.name,
-                    description: this.description
-                })
-                .then(function(res){
-                    console.log(res);
-                    $('#dataModal').modal('hide')
-                    EvenBus.$emit('role-added',res.data.role)
-                })
-                .catch(function(err){
-                    console.log(err);
-                });
+                EvenBus.$emit('object-added',this.objeto)
             }else {
-                axios.put(this.route+'/'+this.id,{
-                    name: this.name,
-                    description: this.description
-                })
-                .then(function(res){
-                    console.log(res);
-                    $('#dataModal').modal('hide')
-                    EvenBus.$emit('role-update',res.data.role)
-                })
-                .catch(function(err){
-                    console.log(err);
-                });
+                this.ObjectEdit.id = this.id
+                EvenBus.$emit('object-edited',this.ObjectEdit)
             }
             this.clearModal();
+            $('#dataModal').modal('hide');
         },
         clearModal(){
-            this.name=null;
-            this.description=null;
+            this.ObjectEdit=null;
             this.id=null;
         }
     }
