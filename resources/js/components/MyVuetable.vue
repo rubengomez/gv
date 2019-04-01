@@ -10,11 +10,7 @@
           dataClass: 'center aligned',
         }]"
   >
-<<<<<<< HEAD
   <template slot="actions" slot-scope="props">
-=======
-  <template slot="actions" scope="props">
->>>>>>> 0e5795a572f1fbffb2ab9f8bce7029b789a2fc62
           <div class="custom-actions">
             <button class="btn btn-outline-info"
               @click="onAction('view-item', props.rowData, props.rowIndex)">
