@@ -25,7 +25,7 @@ class VehicleController extends Controller
      */
     public function create()
     {
-        //
+        return view('vehicles.create');
     }
 
     /**
@@ -66,7 +66,9 @@ class VehicleController extends Controller
      */
     public function show($id)
     {
-        //
+        $vehicle = Vehicle::find($id);
+        return view('vehicles.show',compact('vehicle'));
+
     }
 
     /**
@@ -77,7 +79,8 @@ class VehicleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vehicle = Vehicle::find($id);
+        return view('vehicles.edit',compact('vehicle'));
     }
 
     /**

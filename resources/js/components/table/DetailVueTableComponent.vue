@@ -4,12 +4,13 @@
     :apiMode= 'false'
     :fields="this.fields"
     :data="this.data"
+
   > 
   
   <template slot="actions" slot-scope="props">
           <div class="custom-actions">
-            <button class="btn btn-outline-info"
-              @click="onAction('view-item', props.rowData, props.rowIndex)">
+            <button href="/vehicle" class="btn btn-outline-info"
+              @click="onShow(props.rowData.id)">
               <i class="fas fa-search"></i>
             </button>
             <button class="btn btn-outline-info"
@@ -35,6 +36,7 @@ export default {
     props: {
         data: Array,
         fields: Array
+
     },
   components: {
   Vuetable,DetailRow
@@ -46,7 +48,16 @@ methods: {
     onCellClicked (data, field, event) {
         console.log('cellClicked: ', field.name)
         this.$refs.vuetable.toggleDetailRow(data.id)
+    },
+    onShow(identificador){
+
+        location.href="/vehicles/"+identificador;
+        console.log(identificador)
+        
     }
+  
+
+
 }
 }
 </script>
