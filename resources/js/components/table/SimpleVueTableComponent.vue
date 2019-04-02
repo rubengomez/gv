@@ -24,6 +24,7 @@
 <script>
 import Vuetable from 'vuetable-2/src/components/Vuetable'
 import DetailRow from './../DetailRow'
+import swal from 'sweetalert';
 
     Vue.component('my-detail-row', DetailRow)
 
@@ -39,20 +40,32 @@ export default {
     },
     methods: {
         onAction (data, index) {
-          console.log('slot action: ' + data.name,data.description, index)
           this.indexActive = index
           EvenBus.$emit('object-edit',data)
         },
         onDelete(id,index){
-            axios.delete(this.route+'/'+ id)
-            .then(function(res){
-                console.log(res);
-                EvenBus.$emit('object-del',index)
+            swal({
+              title: "Esta seguro de eliminarlo?",
+              text: "Al eliminar este elemento puede afectar al comportamiento del portal",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
             })
-            .catch(function(err){
-                console.log(err);
+            .then((willDelete) => {
+              if (willDelete) {
+                  axios.delete(this.route+'/'+ id)
+                  .then(function(res){
+                      console.log(res);
+                      EvenBus.$emit('object-del',index)
+                  })
+                  .catch(function(err){
+                      console.log(err);
+                  });
+                swal("Poof! Elemento eliminado!", {
+                  icon: "success",
+                });
+              }
             });
-
         }
     }
 }
