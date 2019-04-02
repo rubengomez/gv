@@ -12,9 +12,9 @@
       <div class="modal-body">
       	<form @submit.prevent="saveModal">
             <div v-if="this.id==null">
-                <div class="form-group" v-for="(variable, key,index) in objetoProps">
+                <div class="form-group" v-for="(variable, key,index) in objeto">
                     <h6 class="text-left">{{ titulos[index] }}</h6>
-                    <input type="text" class="form-control" placeholder="Ingresa un nuevo valor" v-model="objetoProps[key]">
+                    <input type="text" class="form-control" placeholder="Ingresa un nuevo valor" v-model="objeto[key]">
                 </div>
             </div>
             <div v-else>
@@ -38,7 +38,7 @@ export default {
             ObjectEdit:null,
             titulos:this.titles,
             id: null,
-            objeto:this.objetoProps
+            objeto: Object.assign({}, this.objetoProps)
         }
     },
     props: {
@@ -69,6 +69,7 @@ export default {
         clearModal(){
             this.ObjectEdit=null;
             this.id=null;
+            this.objeto= Object.assign({}, this.objetoProps);
         }
     }
 }

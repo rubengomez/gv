@@ -25,7 +25,7 @@
             {name: 'description', title: 'Descripcion'},
             {name: '__slot:actions', title: 'Acciones'}]"
           :data="this.data"
-          :route="'http://127.0.0.1:8000/roles'">
+          :route="'/roles'">
       </simple-vue-table>
     </div>
   </div>
@@ -34,7 +34,6 @@
 <script>
 import EvenBus from '../../even-bus'
 import SimpleVueTable from './SimpleVueTableComponent'
-
 export default {
   name: 'app',
   data(){
@@ -52,7 +51,7 @@ export default {
 },
 created(){
     EvenBus.$on('object-added', data => {
-        axios.post('http://127.0.0.1:8000/roles',{
+        axios.post('/roles',{
             name: data.name,
             description: data.description
         })
@@ -69,7 +68,7 @@ created(){
     })
     EvenBus.$on('object-edited', data => {
         console.log(data);
-        axios.put('http://127.0.0.1:8000/roles/'+data.id,{
+        axios.put('/roles/'+data.id,{
             name: data.name,
             description: data.description
         })
