@@ -14,7 +14,7 @@ class AxesController extends Controller
      */
     public function index(Request $request)
     {
-       
+
         $axes = Axes::all();
         return view('setting.axes.index', compact('axes'));
     }
@@ -82,8 +82,8 @@ class AxesController extends Controller
     public function update(Request $request, $id)
     {
         $axes = Axes::find($id);
+        $axes->key=$request->input('key');
         $axes->name=$request->input('name');
-        $axes->description=$request->input('description');
         $axes->save();
 
         return response()->json([
