@@ -20,7 +20,7 @@ Route::get('/login', function () {
 });
 
 Route::get('/mi_primer_ruta', function(){
-    return view('test.index');
+    return view('engines.index');
 });
 
 Route::get('/name/{name}', function($name){

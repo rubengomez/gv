@@ -6,12 +6,20 @@
         :objetoProps="this.objeto[0]"
         >
     </data-modal>
+
       <div class="container">
+          <div class="row justify-content-between">
+              <div class="col-4">
+              </div>
+              <div class="col-4">
+                  <flash-message transitionIn="animated swing" class="myCustomClass"></flash-message>
+              </div>
+          </div>
           <div class="row justify-content-between">
               <div class="col-4">
                   <h3 class="text-left">
                       <i class="icon ion-md-people"></i>
-                      Roles</h3>
+                      Credito</h3>
               </div>
               <div class="col-4">
                   <a href="/services/create" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#dataModal">Agregar +</a>
@@ -34,6 +42,8 @@
 <script>
 import EvenBus from '../../even-bus'
 import SimpleVueTable from './SimpleVueTableComponent'
+import VueFlashMessage from 'vue-flash-message/src';
+Vue.use(VueFlashMessage);
 export default {
   name: 'app',
   data(){
@@ -62,6 +72,9 @@ created(){
             console.log(err);
         });
         this.data.push(data)
+        this.flash('Rol creado exitosamente', 'success', {
+  timeout: 4000,
+  });
     })
     EvenBus.$on('object-del', index => {
         this.data.splice(index, 1);

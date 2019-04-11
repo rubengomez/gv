@@ -1,22 +1,69 @@
 <template>
+  <div class="ui container">
+    <vuetable ref="vuetable"
+      api-url="https://vuetable.ratiw.net/api/users"
+      :fields="fields"
+      pagination-path=""
+      :per-page="10"
+      @vuetable:pagination-data="onPaginationData"
+    ></vuetable>
 
+        <vuetable-pagination  ref="pagination"
+          @vuetable-pagination:change-page="onChangePage"
+        ></vuetable-pagination>
+  </div>
 </template>
 
 <script>
-
-
+import Vuetable from 'vuetable-2/src/components/Vuetable'
+import VuetablePagination from './table/Pagination'
 export default {
-
-
+  components: {
+    Vuetable,
+    VuetablePagination
+  },
+  data () {
+    return {
+      fields: [
+        'name', 'email',
+        {
+          name: 'birthdate',
+          titleClass: 'center aligned',
+          dataClass: 'center aligned',
+        },
+        {
+          name: 'nickname',
+          callback: 'allcap'
+        },
+        {
+          name: 'gender',
+          titleClass: 'center aligned',
+          dataClass: 'center aligned',
+          callback: 'genderLabel'
+        },
+        {
+          name: 'salary',
+          titleClass: 'center aligned',
+          dataClass: 'right aligned'
+        }
+      ]
+    }
+  },
+  methods: {
+    allcap (value) {
+      return value.toUpperCase()
+    },
+    genderLabel (value) {
+      return value === 'M'
+        ? '<span class="ui teal label"><i class="large man icon"></i>Male</span>'
+        : '<span class="ui pink label"><i class="large woman icon"></i>Female</span>'
+    },
+    onPaginationData (paginationData) {
+      this.$refs.pagination.setPaginationData(paginationData)
+    },
+    onChangePage (page) {
+      this.$refs.vuetable.changePage(page)
+    }
+  }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-</style>
