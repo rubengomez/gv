@@ -24,14 +24,15 @@
             {name:'capacity', title: 'Capacidad',dataClass:'text-left'},
             {name: 'axes_id', title: 'Ejes',dataClass:'text-left'},
             {name: '__slot:actions', title: 'Acciones',dataClass:'text-left'}]"
-          :data="this.data">
+          :data="this.data"
+          :route="'/vehicles'">
       </detail-vue-table>
     </div>
   </div>
 </template>
 
 <script>
-import EvenBus from '../../even-bus' 
+import EvenBus from '../../even-bus'
 import DetailVueTable from './DetailVueTableComponent'
 
 export default {
