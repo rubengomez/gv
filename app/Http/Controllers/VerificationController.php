@@ -24,7 +24,7 @@ class VerificationController extends Controller
      */
     public function create()
     {
-        //
+        return view('verifications.create');
     }
 
     /**
@@ -38,14 +38,14 @@ class VerificationController extends Controller
         if ($request->ajax()) {
         $verify= new Role();
         $verify->date_last_verification = $request->input('date_last_verification');
-        $verify->date_verification = $request->input('date_verification');     
-        $verify->odometre = $request->input('odometre');              
-        $verify->verication_result = $request->input('verication_result');     
-        $verify->cetificate_number = $request->input('cetificate_number');     
-        $verify->test_id = $request->input('test_id');               
-        $verify->vehicle_id = $request->input('vehicle_id');            
-        $verify->tech_id = $request->input('tech_id');               
-        $verify->reject_id = $request->input('reject_id'); 
+        $verify->date_verification = $request->input('date_verification');
+        $verify->odometre = $request->input('odometre');
+        $verify->verication_result = $request->input('verication_result');
+        $verify->cetificate_number = $request->input('cetificate_number');
+        $verify->test_id = $request->input('test_id');
+        $verify->vehicle_id = $request->input('vehicle_id');
+        $verify->tech_id = $request->input('tech_id');
+        $verify->reject_id = $request->input('reject_id');
         $verify->save();
         return response()->json([
             "message" => "Verificacion Creada Correctamente.",
@@ -87,20 +87,20 @@ class VerificationController extends Controller
     {
         $verify= Verification::find($id);
         $verify->date_last_verification = $request->input('date_last_verification');
-        $verify->date_verification = $request->input('date_verification');     
-        $verify->odometre = $request->input('odometre');              
-        $verify->verication_result = $request->input('verication_result');     
-        $verify->cetificate_number = $request->input('cetificate_number');     
-        $verify->test_id = $request->input('test_id');               
-        $verify->vehicle_id = $request->input('vehicle_id');            
-        $verify->tech_id = $request->input('tech_id');               
-        $verify->reject_id = $request->input('reject_id'); 
+        $verify->date_verification = $request->input('date_verification');
+        $verify->odometre = $request->input('odometre');
+        $verify->verication_result = $request->input('verication_result');
+        $verify->cetificate_number = $request->input('cetificate_number');
+        $verify->test_id = $request->input('test_id');
+        $verify->vehicle_id = $request->input('vehicle_id');
+        $verify->tech_id = $request->input('tech_id');
+        $verify->reject_id = $request->input('reject_id');
         $verify->save();
         return response()->json([
             "message" => "Verificacion Actualizada Correctamente.",
             "role" =>$verify
         ],200);
-        
+
     }
 
     /**

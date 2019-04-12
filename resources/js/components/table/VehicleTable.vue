@@ -9,8 +9,8 @@
                       Vehiculos</h3>
               </div>
               <div class="col-4">
-                  <a class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#addPokemon">Agregar +</a>
-              </div>
+                  <a href="/vehicles/create" class="btn btn-outline-primary btn-sm" style="margin-bottom: 1%;">Agregar +</a>
+                 </div>
           </div>
       </div>
     <div class="ui container">

@@ -20,14 +20,17 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
-
+//COMPONENTS
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('card-components', require('./components/CardComponents.vue').default);
 Vue.component('add-pokemon-btn', require('./components/AddPokemonComponent.vue').default);
 Vue.component('modal-component', require('./components/CreatePokemonComponent.vue').default);
 Vue.component('buton-component', require('./components/AddPokemonComponent.vue').default);
+Vue.component('tab-component', require('./components/TabComponent.vue').default);
+//MODAL
 Vue.component('add-role-modal', require('./components/modal/AddRoleModal.vue').default);
 Vue.component('data-modal', require('./components/modal/DataModalComponent.vue').default);
+//TABLES
 Vue.component('table-component', require('./components/table.vue').default);
 Vue.component('roles-table', require('./components/table/RolesTable.vue').default);
 Vue.component('axes-table', require('./components/table/AxesTable.vue').default);
@@ -36,6 +39,10 @@ Vue.component('services-table', require('./components/table/ServicesTable.vue').
 Vue.component('tests-table', require('./components/table/TestsTable.vue').default);
 Vue.component('rejections-table', require('./components/table/RejectionsTable.vue').default);
 Vue.component('vehicle-table', require('./components/table/VehicleTable.vue').default);
+Vue.component('users-table', require('./components/table/UsersTable.vue').default);
+//FORMS
+Vue.component('addvehicle-form', require('./components/forms/AddVehicle.vue').default);
+Vue.component('addverifica-form', require('./components/forms/AddVerification.vue').default);
 /**
 /**
  * Next, we will create a fresh Vue application instance and attach it to
