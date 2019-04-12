@@ -36,13 +36,13 @@ class RejectionController extends Controller
     public function store(Request $request)
     {
         if ($request->ajax()) {
-            $rejects = new Rejects();
+            $rejects = new Rejection();
             $rejects->name = $request->input('name');
             $rejects->save();
 
             return response()->json([
                 "message" => "Rechazo Creado Correctamente.",
-                "reject" =>$rejects
+                "rejects" =>$rejects
             ],200);
         }
     }
@@ -78,13 +78,13 @@ class RejectionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $rejects = Rejects::find($id);
+        $rejects = Rejection::find($id);
         $rejects->name = $request->input('name');
         $rejects->save();
 
         return response()->json([
             "message" => "Rechazo Actualizado Correctamente.",
-            "reject" =>$rejects
+            "rejects" =>$rejects
         ],200);
     }
 
@@ -96,7 +96,7 @@ class RejectionController extends Controller
      */
     public function destroy($id)
     {
-        $rejects = Rejects::find($id);
+        $rejects = Rejection::find($id);
         $rejects->delete();
     }
 }

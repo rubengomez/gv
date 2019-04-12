@@ -55,21 +55,16 @@
                             <a class="nav-link" href="">{{ __('Agenda') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('Clientes') }}</a>
-                        </li> 
+                            <a class="nav-link" href="/users">{{ __('Clientes') }}</a>
+                        </li>
                         <li class="nav-item">
-                             <a class="nav-link" href="">{{ __('Formularios') }}</a>
+                             <a class="nav-link" href="/verify">{{ __('Formularios') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">{{ __('Reportes') }}</a>
                         </li>
-                               
-                        <li class="nav-item">
-                            <a class="nav-link" href="/verify">{{ __('Verificaciones') }}</a>
-                        </li>   
-                        <li class="nav-item">
-                            <a class="nav-link" href="/vehicles">{{ __('Vehiculos') }}</a>
-                        </li>
+
+
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -81,7 +76,7 @@
                             <a class="dropdown-item" href="/tests">{{ __('Pruebas') }}</a>
                             <a class="dropdown-item" href="/rejects">{{ __('Rechazos') }}</a>
                             <a class="dropdown-item" href="/roles">{{ __('Roles') }}</a>
-                            <a class="dropdown-item" href="/services">{{ __('Servicios') }}</a>      
+                            <a class="dropdown-item" href="/services">{{ __('Servicios') }}</a>
                             </div>
 
                             <li class="nav-item dropdown">
