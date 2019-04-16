@@ -143,7 +143,7 @@
 
             <select v-model="selectServices" class="custom-select">
                       <option disabled value="">Servicios</option>
-                      <option v-for="service in services" v-bind:value="service.key">
+                      <option v-for="service in services" v-bind:value="service.id">
                           {{ service.name }}
                       </option>
             </select>
