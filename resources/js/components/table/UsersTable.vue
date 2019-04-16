@@ -23,7 +23,7 @@
             {name: '__slot:vehicles', title: 'Vehiculos',dataClass:'text-center'},
             {name: '__slot:actions', title: 'Acciones',dataClass:'text-center'}]"
           :data="this.datos"
-          :route="'/vehicles'">
+          :route="'/users'">
       </detail-vue-table>
     </div>
   </div>
@@ -38,13 +38,13 @@ export default {
   data(){
       return{
           datos:[
-              {name:'cliente 1',mail:'cliente1@gmail.com',tel:'656415101',address:'calle 1 col 1'},
-              {name:'cliente 2',mail:'cliente2@gmail.com',tel:'656415101',address:'calle 2  col 2'},
-              {name:'cliente 3',mail:'cliente3@gmail.com',tel:'656415101',address:'calle 3 col 3'},
-              {name:'cliente 4',mail:'cliente4@gmail.com',tel:'656415101',address:'calle 4  col 4'},
-              {name:'cliente 5',mail:'cliente5@gmail.com',tel:'656415101',address:'calle 5 col 5'},
-              {name:'cliente 6',mail:'cliente6@gmail.com',tel:'656415101',address:'calle 6 col 6'},
-              {name:'cliente 7',mail:'cliente7@gmail.com',tel:'656415101',address:'calle 7 col 7'}
+              {id:'1',name:'cliente 1',mail:'cliente1@gmail.com',tel:'656415101',address:'calle 1 col 1'},
+              {id:'2',name:'cliente 2',mail:'cliente2@gmail.com',tel:'656415101',address:'calle 2  col 2'},
+              {id:'3',name:'cliente 3',mail:'cliente3@gmail.com',tel:'656415101',address:'calle 3 col 3'},
+              {id:'4',name:'cliente 4',mail:'cliente4@gmail.com',tel:'656415101',address:'calle 4  col 4'},
+              {id:'5',name:'cliente 5',mail:'cliente5@gmail.com',tel:'656415101',address:'calle 5 col 5'},
+              {id:'6',name:'cliente 6',mail:'cliente6@gmail.com',tel:'656415101',address:'calle 6 col 6'},
+              {id:'7',name:'cliente 7',mail:'cliente7@gmail.com',tel:'656415101',address:'calle 7 col 7'}
           ]
       }
   },

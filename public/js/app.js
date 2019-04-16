@@ -2381,7 +2381,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2392,7 +2391,7 @@ __webpack_require__.r(__webpack_exports__);
       fecha_ver: [],
       hr_inicio: [],
       hr_termino: [],
-      ult_ver: [],
+      lt_ver: [],
       rfc: '',
       nom_rs: '',
       domicilio: '',
@@ -2407,8 +2406,31 @@ __webpack_require__.r(__webpack_exports__);
       vpres: '',
       odor: '',
       ntec: '',
-      observa: ''
+      observa: '',
+      services: '',
+      selectServices: '',
+      options: [{
+        text: 'Marco Juarez',
+        value: '1'
+      }, {
+        text: 'Juan Perez ',
+        value: '2'
+      }, {
+        text: 'Pedro Jimenez',
+        value: '3'
+      }]
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/services', {
+      value: "rosa"
+    }).then(function (res) {
+      return _this.services = res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
   }
 });
 
@@ -3618,36 +3640,43 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       datos: [{
+        id: '1',
         name: 'cliente 1',
         mail: 'cliente1@gmail.com',
         tel: '656415101',
         address: 'calle 1 col 1'
       }, {
+        id: '2',
         name: 'cliente 2',
         mail: 'cliente2@gmail.com',
         tel: '656415101',
         address: 'calle 2  col 2'
       }, {
+        id: '3',
         name: 'cliente 3',
         mail: 'cliente3@gmail.com',
         tel: '656415101',
         address: 'calle 3 col 3'
       }, {
+        id: '4',
         name: 'cliente 4',
         mail: 'cliente4@gmail.com',
         tel: '656415101',
         address: 'calle 4  col 4'
       }, {
+        id: '5',
         name: 'cliente 5',
         mail: 'cliente5@gmail.com',
         tel: '656415101',
         address: 'calle 5 col 5'
       }, {
+        id: '6',
         name: 'cliente 6',
         mail: 'cliente6@gmail.com',
         tel: '656415101',
         address: 'calle 6 col 6'
       }, {
+        id: '7',
         name: 'cliente 7',
         mail: 'cliente7@gmail.com',
         tel: '656415101',
@@ -8275,7 +8304,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.top-space{\r\n    margin-top: 20px\n}\r\n/* Style the tabs */\n.tabs {\r\noverflow: hidden;\r\nmargin-left: 20px;\r\nmargin-bottom: -2px;\n}\n.tabs ul {\r\nlist-style-type: none;\r\nmargin-left: 20px;\n}\n.tabs a{\r\nfloat: left;\r\ncursor: pointer;\r\npadding: 12px 24px;\r\ntransition: background-color 0.2s;\r\nborder: 1px solid #ccc;\r\nborder-right: none;\r\nbackground-color: #f1f1f1;\r\nborder-radius: 10px 10px 0 0;\r\nfont-weight: bold;\n}\n.tabs a:last-child {\r\nborder-right: 1px solid #ccc;\n}\r\n/* Change background color of tabs on hover */\n.tabs a:hover {\r\nbackground-color: #aaa;\r\ncolor: #fff;\n}\r\n/* Styling for active tab */\n.tabs a.active {\r\nbackground-color: #fff;\r\ncolor: #484848;\r\nborder-bottom: 2px solid #fff;\r\ncursor: default;\n}\r\n/* Style the tab content */\n.tabcontent {\r\npadding: 30px;\r\nborder: 1px solid #ccc;\r\nborder-radius: 10px;\r\nbox-shadow: 3px 3px 6px #e1e1e1\n}\r\n", ""]);
+exports.push([module.i, "\n.top-space{\n    margin-top: 20px\n}\n/* Style the tabs */\n.tabs {\noverflow: hidden;\nmargin-left: 20px;\nmargin-bottom: -2px;\n}\n.tabs ul {\nlist-style-type: none;\nmargin-left: 20px;\n}\n.tabs a{\nfloat: left;\ncursor: pointer;\npadding: 12px 24px;\ntransition: background-color 0.2s;\nborder: 1px solid #ccc;\nborder-right: none;\nbackground-color: #f1f1f1;\nborder-radius: 10px 10px 0 0;\nfont-weight: bold;\n}\n.tabs a:last-child {\nborder-right: 1px solid #ccc;\n}\n/* Change background color of tabs on hover */\n.tabs a:hover {\nbackground-color: #aaa;\ncolor: #fff;\n}\n/* Styling for active tab */\n.tabs a.active {\nbackground-color: #fff;\ncolor: #484848;\nborder-bottom: 2px solid #fff;\ncursor: default;\n}\n/* Style the tab content */\n.tabcontent {\npadding: 30px;\nborder: 1px solid #ccc;\nborder-radius: 10px;\nbox-shadow: 3px 3px 6px #e1e1e1\n}\n", ""]);
 
 // exports
 
@@ -8294,7 +8323,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#app {\r\n  font-family: 'Avenir', Helvetica, Arial, sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  color: #2c3e50;\n}\n.btn-guarda {\r\n  padding: 5%;\r\n  margin-top: 5%;\n}\n.lpad {\r\n  padding-top: 4%;\r\n  text-align: left;\r\n  padding-left: 4%;\n}\r\n", ""]);
+exports.push([module.i, "\n#app {\n  font-family: 'Avenir', Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-align: center;\n  color: #2c3e50;\n}\n.btn-guarda {\n  padding: 5%;\n  margin-top: 5%;\n}\n.lpad {\n  padding-top: 4%;\n  text-align: left;\n  padding-left: 4%;\n}\n", ""]);
 
 // exports
 
@@ -8313,7 +8342,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.btn-guarda[data-v-0cc0cc21] {\r\n  padding: 5%;\r\n  margin-top: 5%;\n}\n.lpad[data-v-0cc0cc21] {\r\n  padding-top: 4%;\r\n  text-align: left;\r\n  padding-left: 4%;\n}\r\n", ""]);
+exports.push([module.i, "\n.btn-guarda[data-v-0cc0cc21] {\n  padding: 5%;\n  margin-top: 5%;\n}\n.lpad[data-v-0cc0cc21] {\n  padding-top: 4%;\n  text-align: left;\n  padding-left: 4%;\n}\n", ""]);
 
 // exports
 
@@ -8351,7 +8380,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#app {\r\n  font-family: 'Avenir', Helvetica, Arial, sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  color: #2c3e50;\n}\r\n", ""]);
+exports.push([module.i, "\n#app {\n  font-family: 'Avenir', Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-align: center;\n  color: #2c3e50;\n}\n", ""]);
 
 // exports
 
@@ -8446,7 +8475,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#app {\r\n  font-family: 'Avenir', Helvetica, Arial, sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  color: #2c3e50;\n}\r\n", ""]);
+exports.push([module.i, "\n#app {\n  font-family: 'Avenir', Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-align: center;\n  color: #2c3e50;\n}\n", ""]);
 
 // exports
 
@@ -43176,7 +43205,7 @@ var render = function() {
       _vm._v(" "),
       _vm.activetab === 2
         ? _c("div", { staticClass: "tabcontent" }, [
-            _vm._v("\r\n        Contruccion...\r\n    ")
+            _vm._v("\n        Contruccion...\n    ")
           ])
         : _vm._e()
     ])
@@ -43189,7 +43218,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("h3", { staticClass: "text-left" }, [
       _c("i", { staticClass: "fas fa-car" }),
-      _vm._v("\r\n\r\n             Verificaciónes ")
+      _vm._v("\n\n             Verificaciónes ")
     ])
   }
 ]
@@ -44245,12 +44274,11 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.tservicio,
-                expression: "tservicio"
+                value: _vm.selectServices,
+                expression: "selectServices"
               }
             ],
             staticClass: "custom-select",
-            attrs: { id: "tserv" },
             on: {
               change: function($event) {
                 var $$selectedVal = Array.prototype.filter
@@ -44261,23 +44289,28 @@ var render = function() {
                     var val = "_value" in o ? o._value : o.value
                     return val
                   })
-                _vm.tservicio = $event.target.multiple
+                _vm.selectServices = $event.target.multiple
                   ? $$selectedVal
                   : $$selectedVal[0]
               }
             }
           },
           [
-            _c("option", { attrs: { selected: "" } }, [
-              _vm._v("Tipo Servicio")
+            _c("option", { attrs: { disabled: "", value: "" } }, [
+              _vm._v("Servicios")
             ]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "1" } }, [_vm._v("One")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "2" } }, [_vm._v("Two")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "3" } }, [_vm._v("Three")])
-          ]
+            _vm._l(_vm.services, function(service) {
+              return _c("option", { domProps: { value: service.id } }, [
+                _vm._v(
+                  "\n                          " +
+                    _vm._s(service.name) +
+                    "\n                      "
+                )
+              ])
+            })
+          ],
+          2
         )
       ]),
       _vm._v(" "),
@@ -45785,7 +45818,7 @@ var render = function() {
               }
             ],
             data: this.datos,
-            route: "/vehicles"
+            route: "/users"
           }
         })
       ],

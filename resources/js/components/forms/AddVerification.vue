@@ -141,12 +141,11 @@
          <div class="col-md">
             <label for="tserv">Tipo Servicio</label>
 
-            <select class="custom-select" id=tserv v-model="tservicio">
-
-                <option selected>Tipo Servicio</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+            <select v-model="selectServices" class="custom-select">
+                      <option disabled value="">Servicios</option>
+                      <option v-for="service in services" v-bind:value="service.id">
+                          {{ service.name }}
+                      </option>
             </select>
         </div>
         <div class="col-md">
@@ -196,30 +195,45 @@ export default {
   data(){
       return{
           aproba:'',
-acredita:'',
-semeste:'',
-resultado:'',
-fecha_ver:[],
-hr_inicio:[],
-hr_termino:[],
-ult_ver:[],
-rfc:'',
-nom_rs:'',
-domicilio:'',
-estado:'',
-cp:'',
-nserie:'',
-placa:'',
-t_circula:'',
-modelo:'',
-tvehiculo:[],
-tservicio:[],
-vpres:'',
-odor:'',
-ntec:'',
-observa:''
-    }
-  }
+          acredita:'',
+          semeste:'',
+          resultado:'',
+          fecha_ver:[],
+          hr_inicio:[],
+          hr_termino:[],
+          lt_ver:[],
+          rfc:'',
+          nom_rs:'',
+          domicilio:'',
+          estado:'',
+          cp:'',
+          nserie:'',
+          placa:'',
+          t_circula:'',
+          modelo:'',
+          tvehiculo:[],
+          tservicio:[],
+          vpres:'',
+          odor:'',
+          ntec:'',
+          observa:'',
+          services:'',
+          selectServices:'',
+          options:[
+                { text: 'Marco Juarez', value: '1' },
+                { text: 'Juan Perez ', value: '2' },
+                { text: 'Pedro Jimenez', value: '3' }
+            ]
+        }
+    },
+    mounted(){
+        axios.get('/services',{
+        value: "rosa",
+    }).then(res => (this.services = res.data))
+    .catch(function(err){
+        console.log(err);
+    });
+    },
 }
 
 </script>
