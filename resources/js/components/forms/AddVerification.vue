@@ -218,7 +218,12 @@ export default {
           ntec:'',
           observa:'',
           services:'',
-          selectServices:''
+          selectServices:'',
+          options:[
+                { text: 'Marco Juarez', value: '1' },
+                { text: 'Juan Perez ', value: '2' },
+                { text: 'Pedro Jimenez', value: '3' }
+            ]
         }
     },
     mounted(){
