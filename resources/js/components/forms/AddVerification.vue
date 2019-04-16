@@ -143,7 +143,7 @@
 
             <select v-model="selectServices" class="custom-select">
                       <option disabled value="">Servicios</option>
-                      <option v-for="service in services" v-bind:value="service.id">
+                      <option v-for="service in services" v-bind:value="service.key">
                           {{ service.name }}
                       </option>
             </select>
@@ -218,12 +218,7 @@ export default {
           ntec:'',
           observa:'',
           services:'',
-          selectServices:'',
-          options:[
-                { text: 'Marco Juarez', value: '1' },
-                { text: 'Juan Perez ', value: '2' },
-                { text: 'Pedro Jimenez', value: '3' }
-            ]
+          selectServices:''
         }
     },
     mounted(){
