@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        return 'Hola Usuario.';
+        return view("users.index");
     }
 
     /**

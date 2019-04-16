@@ -1,24 +1,30 @@
 <template>
   <div id="table">
-      <!--add-role-modal></add-role-modal-->
+      <data-modal
+        :nameModal="'Rechazos'"
+        :titles="['Nombre']"
+        :objetoProps="this.objeto[0]"
+        >
+        </data-modal>
       <div class="container">
           <div class="row justify-content-between">
               <div class="col-4">
                   <h3 class="text-left">
-                     <i class="fas fa-wrench"></i>
-                      Motores</h3>
+                      <i class="fas fa-times-circle"></i>
+                      Rechazos</h3>
               </div>
               <div class="col-4">
-                  <a class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#addPokemon">Agregar +</a>
+                  <a class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#dataModal">Agregar +</a>
               </div>
           </div>
       </div>
     <div class="ui container">
       <simple-vue-table
           :fields="[
-            {name:'name', title: 'Nombre del Motor'},
+            {name:'name', title: 'Nombre de Rechazo'},
             {name: '__slot:actions', title: 'Acciones'}]"
-          :data="this.data">
+          :data="this.data"
+          :route="'/rejects'">
       </simple-vue-table>
     </div>
   </div>
@@ -27,23 +33,48 @@
 <script>
 import EvenBus from '../../even-bus'
 import SimpleVueTable from './SimpleVueTableComponent'
-
 export default {
   name: 'app',
+  data(){
+      return{
+          objeto:[
+              {name:null}
+          ]
+      }
+  },
   props: {
       data: Array,
   },
   components: {
     SimpleVueTable
 },
-/*created(){
-    EvenBus.$on('role-added', data => {
+created(){
+    EvenBus.$on('object-added', data => {
+        axios.post('/rejects',{
+            name: data.name
+        })
+        .then(function(res){
+            console.log(res);
+        })
+        .catch(function(err){
+            console.log(err);
+        });
         this.data.push(data)
     })
-    EvenBus.$on('role-del', index => {
+    EvenBus.$on('object-del', index => {
         this.data.splice(index, 1);
     })
-    EvenBus.$on('role-update', data => {
+    EvenBus.$on('object-edited', data => {
+        console.log(data);
+        axios.put('/rejects/'+data.id,{
+            name: data.name
+        })
+        .then(function(res){
+            console.log(res);
+        })
+        .catch(function(err){
+            console.log(err);
+        });
         var indexActive = 0;
         this.data.forEach(function(element,index) {
             if (element.id == data.id) {
@@ -53,7 +84,7 @@ export default {
         this.data[indexActive]=data;
         this.data.push()
     })
-},*/
+},
 }
 </script>
 

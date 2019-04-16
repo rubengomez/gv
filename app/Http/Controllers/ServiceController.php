@@ -15,9 +15,12 @@ class ServiceController extends Controller
      */
     public function index(Request $request)
     {
-       
         $services = Service::all();
-        return view('setting.services.index', compact('services'));
+        if ($request->ajax()) {
+            return response()->json($services,200);
+        }else{
+            return view('setting.services.index', compact('services'));
+        }
     }
 
     /**

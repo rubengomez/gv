@@ -2,5 +2,5 @@
 @section('title' , 'Verificaciones')
 
 @section('content')
-        {{ $verify }}     
+        <tab-component></tab-component>     
 @endsection

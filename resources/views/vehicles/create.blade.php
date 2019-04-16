@@ -2,5 +2,6 @@
 @section('title' , 'Vehiculos')
 
 @section('content')
-<p>Hi Create</p>
+    <addvehicle-form>
+    </addvehicle-form>
 @endsection

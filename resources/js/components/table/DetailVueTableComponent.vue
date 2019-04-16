@@ -9,23 +9,30 @@
     :per-page="5"
     @vuetable:pagination-data="onPaginationData"
   >
-
+  <template slot="vehicles" slot-scope="props">
+      <div class="custom-actions">
+          <button class="btn btn-outline-info"
+              @click="showVehicles(props.rowData.id)">
+              <i class="fas fa-car"></i>
+          </button>
+      </div>
+  </template>
   <template slot="actions" slot-scope="props">
-          <div class="custom-actions">
-            <button class="btn btn-outline-info"
+      <div class="custom-actions">
+          <button class="btn btn-outline-info"
               @click="onShow(props.rowData.id)">
               <i class="fas fa-search"></i>
-            </button>
-            <button class="btn btn-outline-info"
+          </button>
+          <button class="btn btn-outline-info"
               @click="onEdit(props.rowData.id)">
               <i class="fas fa-pencil-alt"></i>
-            </button>
-            <button class="btn btn-outline-danger"
+          </button>
+          <button class="btn btn-outline-danger"
               @click="onAction('delete-item', props.rowData, props.rowIndex)">
               <i class="fas fa-trash-alt"></i>
-            </button>
-          </div>
-        </template>
+          </button>
+      </div>
+  </template>
     </vuetable>
     <vuetable-pagination  ref="pagination"
       @vuetable-pagination:change-page="onChangePage"
@@ -56,6 +63,12 @@ methods: {
     onCellClicked (data, field, event) {
         console.log('cellClicked: ', field.name)
         this.$refs.vuetable.toggleDetailRow(data.id)
+    },
+    showVehicles(identificador){
+
+        location.href="/vehicles";
+        console.log(identificador)
+
     },
     onShow(identificador){
 
