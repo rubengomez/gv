@@ -7,9 +7,6 @@
             <div class="row justify-content-between">
               <h3 class="text-left">
                 <i class="fas fa-car"></i>
-                <<<<<<< HEAD
-                =======
-                >>>>>>> e9a65ffea73cf61620b8a99393b53004954edf6c
                 Nuevo Ingreso Vehiculo
               </h3>
             </div>
@@ -30,9 +27,6 @@
       <div class="col-md-4">
         <label for="modelo">Modelo</label>
         <input type="text" class="form-control" id="modelo" placeholder="Modelo" v-model="modelo">
-        <<<<<<< HEAD
-        =======
-        >>>>>>> e9a65ffea73cf61620b8a99393b53004954edf6c
       </div>
     </div>
     <div iv class="row lpad">
@@ -95,7 +89,6 @@
 
 <script>
 import EvenBus from "../../even-bus";
-
 export default {
   data() {
     return {
@@ -111,9 +104,7 @@ export default {
         { text: "Two", value: "2" },
         { text: "Three", value: "3" }
       ],
-
       sejes: [],
-
       sserv: [
         { text: "One", value: "1" },
         { text: "Two", value: "2" },
@@ -121,7 +112,6 @@ export default {
       ]
     };
   },
-
   mounted() {
     axios
       .get("http://127.0.0.1:8000/axes")
@@ -130,9 +120,7 @@ export default {
   }
 };
 // console.log(response.data);
-
 /*const axios = require('axios');
-
 // Make a request for a user with a given ID
  axios.get('http://127.0.0.1:8000/axes')
 .then(function (response) {
