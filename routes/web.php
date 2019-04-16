@@ -27,6 +27,10 @@ Route::get('/name/{name}', function($name){
     return 'Hello World '.$name;
 });
 
+Route::get('/agenda', function(){
+    return view('calendar.index');
+});
+
 Route::resource('users', 'UserController');
 Route::resource('services', 'ServiceController');
 Route::resource('axes', 'AxesController');

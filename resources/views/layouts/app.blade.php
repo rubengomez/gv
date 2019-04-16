@@ -52,7 +52,7 @@
                         @else
 
                         <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('Agenda') }}</a>
+                            <a class="nav-link" href="/agenda">{{ __('Agenda') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/users">{{ __('Clientes') }}</a>

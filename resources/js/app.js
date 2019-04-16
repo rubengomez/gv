@@ -30,6 +30,8 @@ Vue.component('tab-component', require('./components/TabComponent.vue').default)
 //MODAL
 Vue.component('add-role-modal', require('./components/modal/AddRoleModal.vue').default);
 Vue.component('data-modal', require('./components/modal/DataModalComponent.vue').default);
+//CALENDAR
+Vue.component('calendar-component', require('./components/calendar/CalendarComponent.vue').default);
 //TABLES
 Vue.component('table-component', require('./components/table.vue').default);
 Vue.component('roles-table', require('./components/table/RolesTable.vue').default);
