@@ -2160,24 +2160,7 @@ __webpack_require__.r(__webpack_exports__);
     });
     console.log(response);
   }
-}); // console.log(response.data);
-
-/*const axios = require('axios');
-// Make a request for a user with a given ID
- axios.get('http://127.0.0.1:8000/axes')
-.then(function (response) {
-    // handle success
-    console.log(response);
-    this.sejes = response.data;
-     return sejes;
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .then(function () {
-    // always executed
-  })*/
+});
 
 /***/ }),
 
@@ -2408,17 +2391,7 @@ __webpack_require__.r(__webpack_exports__);
       ntec: '',
       observa: '',
       services: '',
-      selectServices: '',
-      options: [{
-        text: 'Marco Juarez',
-        value: '1'
-      }, {
-        text: 'Juan Perez ',
-        value: '2'
-      }, {
-        text: 'Pedro Jimenez',
-        value: '3'
-      }]
+      selectServices: ''
     };
   },
   mounted: function mounted() {
@@ -44301,7 +44274,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _vm._l(_vm.services, function(service) {
-              return _c("option", { domProps: { value: service.id } }, [
+              return _c("option", { domProps: { value: service.key } }, [
                 _vm._v(
                   "\n                          " +
                     _vm._s(service.name) +

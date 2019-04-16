@@ -111,23 +111,6 @@ data(){
         console.log(response);
         }
 }
-           // console.log(response.data);
-/*const axios = require('axios');
-// Make a request for a user with a given ID
- axios.get('http://127.0.0.1:8000/axes')
-.then(function (response) {
-    // handle success
-    console.log(response);
-    this.sejes = response.data;
-     return sejes;
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .then(function () {
-    // always executed
-  })*/
 
 </script>
 
