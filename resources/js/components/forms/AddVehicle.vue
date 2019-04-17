@@ -62,20 +62,20 @@
       </div>
       <div class="col-md">
         <label for="motor1">Motor</label>
-        <select class="custom-select" id="motor1" v-model="smotor">
-          <option v-for="moto in smotor" v-bind:key="moto.value">{{ moto.text }}</option>
+        <select class="form-control" id="motor1" v-model="motors">
+          <option v-for="moto in smotor" v-bind:value="moto.id">{{ moto.name }}</option>
         </select>
       </div>
       <div class="col-md">
         <label for="ejes">Ejes</label>
-        <select class="form-control" id="ejes" v-model="sejes">
-          <option v-for="eje in sejes" v-bind:key="eje.value">{{ eje.text }}</option>
+        <select class="form-control" id="ejes" v-model="axes">
+          <option v-for="eje in sejes" v-bind:value="eje.id">{{ eje.name }}</option>
         </select>
       </div>
       <div class="col-md">
         <label for="serv">Servicios</label>
-        <select class="custom-select" id="serv" v-model="sserv">
-          <option v-for="serv in sserv" v-bind:key="serv.value">{{ serv.text }}</option>
+        <select class="form-control" id="serv" v-model="servi">
+          <option v-for="serv in sserv" v-bind:value="serv.id">{{ serv.name }}</option>
         </select>
       </div>
     </div>
@@ -99,43 +99,36 @@ export default {
       placa: "",
       circula: "",
       capacidad: "",
-      smotor: [
-        { text: "One", value: "1" },
-        { text: "Two", value: "2" },
-        { text: "Three", value: "3" }
-      ],
+      motors: "",
+      smotor: [],
+      axes: "",
       sejes: [],
-      sserv: [
-        { text: "One", value: "1" },
-        { text: "Two", value: "2" },
-        { text: "Three", value: "3" }
-      ]
+      servi: "",
+      sserv: []
     };
   },
   mounted() {
     axios
-      .get("http://127.0.0.1:8000/axes")
-      .then(response => (this.sejes = response.data));
-    console.log(response);
+      .get("/axes")
+      .then(res => (this.sejes = res.data))
+      .catch(function(err) {
+        console.log(err);
+      });
+
+    axios
+      .get("/services")
+      .then(res => (this.sserv = res.data))
+      .catch(function(err) {
+        console.log(err);
+      });
+    axios
+      .get("/engines")
+      .then(res => (this.smotor = res.data))
+      .catch(function(err) {
+        console.log(err);
+      });
   }
 };
-// console.log(response.data);
-/*const axios = require('axios');
-// Make a request for a user with a given ID
- axios.get('http://127.0.0.1:8000/axes')
-.then(function (response) {
-    // handle success
-    console.log(response);
-    this.sejes = response.data;
-     return sejes;
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .then(function () {
-    // always executed
-  })*/
 </script>
 
 <style scope>

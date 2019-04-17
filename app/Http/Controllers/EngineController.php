@@ -12,11 +12,15 @@ class EngineController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $engine = Engine::all();
+ if ($request->ajax()) {
+            return response()->json($engine,200);
+        }else{
+             return view('setting.engines.index', compact('engine'));
+        }
 
-        return view('setting.engines.index', compact('engine'));
     }
 
     /**

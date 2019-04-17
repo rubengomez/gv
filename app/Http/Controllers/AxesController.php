@@ -16,7 +16,11 @@ class AxesController extends Controller
     {
 
         $axes = Axes::all();
-        return view('setting.axes.index', compact('axes'));
+        if ($request->ajax()) {
+            return response()->json($axes,200);
+        }else{
+             return view('setting.axes.index', compact('axes'));
+        }
     }
 
     /**
