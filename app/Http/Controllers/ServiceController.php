@@ -83,6 +83,15 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $service = Service::find($id);
+        $service->key=$request->input('key');
+        $service->name=$request->input('name');
+        $service->save();
+
+        return response()->json([
+            "message" => "Eje Actualizado Correctamente.",
+            "axes" =>$service
+        ],200);
         //
     }
 
@@ -94,6 +103,7 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $service = Service::find($id);
+        $service->delete();
     }
 }
