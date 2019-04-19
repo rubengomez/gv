@@ -38,15 +38,15 @@ class VehicleController extends Controller
     {
         if ($request->ajax()) {
             $vehicle = new Vehicle();
-            $vehicle->brand = $request->input('brand'); 
-            $vehicle->model = $request->input('model'); 
-            $vehicle->series = $request->input('series'); 
-            $vehicle->plate_number = $request->input('plate_number'); 
-            $vehicle->folio_circulation = $request->input('folio_circulation'); 
-            $vehicle->capacity = $request->input('capacity'); 
-            $vehicle->axes_id = $request->input('axes_id'); 
-            $vehicle->engine_id = $request->input('engine_id'); 
-            $vehicle->service_id = $request->input('service_id'); 
+            $vehicle->brand = $request->input('brand');
+            $vehicle->model = $request->input('model');
+            $vehicle->series = $request->input('series');
+            $vehicle->plate_number = $request->input('plate_number');
+            $vehicle->folio_circulation = $request->input('folio_circulation');
+            $vehicle->capacity = $request->input('capacity');
+            $vehicle->axes_id = $request->input('axes_id');
+            $vehicle->engine_id = $request->input('engine_id');
+            $vehicle->service_id = $request->input('service_id');
             $vehicle->user_id = $request->input('user_id');
             $vehicle->save();
 
@@ -68,6 +68,13 @@ class VehicleController extends Controller
     {
         $vehicle = Vehicle::find($id);
         return view('vehicles.show',compact('vehicle'));
+/*
+        if ($request->ajax()) {
+            return response()->json($vehicle,200);
+        }else{
+            return view('vehicles.show',compact('vehicle'));
+        } */
+
 
     }
 
@@ -93,15 +100,15 @@ class VehicleController extends Controller
     public function update(Request $request, $id)
     {
         $vehicle = Vehicle::find($id);
-        $vehicle->brand = $request->input('brand'); 
-        $vehicle->model = $request->input('model'); 
-        $vehicle->series = $request->input('series'); 
-        $vehicle->plate_number = $request->input('plate_number');             $vehicle->folio_circulation = $request->input('folio_circulation'); 
-        $vehicle->capacity = $request->input('capacity'); 
-        $vehicle->axes_id = $request->input('axes_id'); 
-        $vehicle->engine_id = $request->input('engine_id'); 
-        $vehicle->service_id = $request->input('service_id'); 
-        $vehicle->user_id = $request->input('user_id');  
+        $vehicle->brand = $request->input('brand');
+        $vehicle->model = $request->input('model');
+        $vehicle->series = $request->input('series');
+        $vehicle->plate_number = $request->input('plate_number');             $vehicle->folio_circulation = $request->input('folio_circulation');
+        $vehicle->capacity = $request->input('capacity');
+        $vehicle->axes_id = $request->input('axes_id');
+        $vehicle->engine_id = $request->input('engine_id');
+        $vehicle->service_id = $request->input('service_id');
+        $vehicle->user_id = $request->input('user_id');
         $role->save();
 
         return response()->json([

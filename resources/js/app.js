@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -42,8 +41,12 @@ Vue.component('tests-table', require('./components/table/TestsTable.vue').defaul
 Vue.component('rejections-table', require('./components/table/RejectionsTable.vue').default);
 Vue.component('vehicle-table', require('./components/table/VehicleTable.vue').default);
 Vue.component('users-table', require('./components/table/UsersTable.vue').default);
+
 //FORMS
 Vue.component('addvehicle-form', require('./components/forms/AddVehicle.vue').default);
+Vue.component('editvehicle-form', require('./components/forms/EditVehicle.vue').default);
+Vue.component('showvehicle-form', require('./components/forms/ShowVehicle.vue').default);
+
 Vue.component('addverifica-form', require('./components/forms/AddVerification.vue').default);
 /**
 /**
