@@ -1,10 +1,13 @@
 @extends('layouts.app')
-@section('title' , 'Vehiculos')
+@section('title' , 'Muesta Vehiculos')
 
 @section('content')
 
+<showvehicle-form
+    :data="{{ $vehicle }}">
+</showvehicle-form>
 
-{{ $vehicle }}
+
 
 
 @endsection

@@ -2,7 +2,9 @@
 @section('title' , 'Vehiculos')
 
 @section('content')
+<editvehicle-form
+:data="{{ $vehicle }}">
+</editvehicle-form>
 
-{{ $vehicle }}
 
 @endsection
