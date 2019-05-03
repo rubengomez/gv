@@ -2,10 +2,10 @@
 @section('title' , 'Muesta Vehiculos')
 
 @section('content')
-
-<showvehicle-form
-    :data="{{ $vehicle }}">
-</showvehicle-form>
+<editvehicle-form
+    :data="{{ $vehicle }}"
+    :onlyshow="'disabled'">
+</editvehicle-form>
 
 
 

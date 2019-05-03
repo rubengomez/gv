@@ -3,7 +3,7 @@
 namespace Garro\Http\Controllers;
 use Garro\Vehicle;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class VehicleController extends Controller
 {
@@ -103,13 +103,14 @@ class VehicleController extends Controller
         $vehicle->brand = $request->input('brand');
         $vehicle->model = $request->input('model');
         $vehicle->series = $request->input('series');
-        $vehicle->plate_number = $request->input('plate_number');             $vehicle->folio_circulation = $request->input('folio_circulation');
+        $vehicle->plate_number = $request->input('plate_number');
+        $vehicle->folio_circulation = $request->input('folio_circulation');
         $vehicle->capacity = $request->input('capacity');
         $vehicle->axes_id = $request->input('axes_id');
         $vehicle->engine_id = $request->input('engine_id');
         $vehicle->service_id = $request->input('service_id');
         $vehicle->user_id = $request->input('user_id');
-        $role->save();
+        $vehicle->save();
 
         return response()->json([
             "message" => "Vehiculo Actualizado Correctamente.",
@@ -127,5 +128,25 @@ class VehicleController extends Controller
     {
         $vehicle = Vehicle::find($id);
         $vehicle->delete();
+    }
+    public function showVehicles($id)
+    {
+        //$vehicle = Vehicle::find($id);
+        $vehicle = DB::table('vehicles')
+                    ->where('user_id', '=', $id)
+                    ->join('users', 'vehicles.user_id', '=', 'users.id')
+                    ->select('vehicles.*','users.name')
+                    ->get();
+        return view('vehicles.index',compact('vehicle'));
+/*
+        if ($request->ajax()) {
+            return response()->json($vehicle,200);
+        }else{
+            return view('vehicles.show',compact('vehicle'));
+        } */
+    }
+    public function addVehicle($id)
+    {
+            return view('vehicles.create',compact('id'));
     }
 }

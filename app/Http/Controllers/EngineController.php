@@ -15,7 +15,7 @@ class EngineController extends Controller
     public function index(Request $request)
     {
         $engine = Engine::all();
- if ($request->ajax()) {
+        if ($request->ajax()) {
             return response()->json($engine,200);
         }else{
              return view('setting.engines.index', compact('engine'));

@@ -2,6 +2,7 @@
 @section('title' , 'Vehiculos')
 
 @section('content')
-    <addvehicle-form>
-    </addvehicle-form>
+    <editvehicle-form
+    :cliente="{{ $id }}">
+    </editvehicle-form>
 @endsection

@@ -28,7 +28,7 @@
               <i class="fas fa-pencil-alt"></i>
           </button>
           <button class="btn btn-outline-danger"
-              @click="onAction('delete-item', props.rowData, props.rowIndex)">
+              @click="onDelete(props.rowData.id,props.rowIndex)">
               <i class="fas fa-trash-alt"></i>
           </button>
       </div>
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import EvenBus from "../../even-bus";
 import Vuetable from 'vuetable-2/src/components/Vuetable'
 import DetailRow from './../DetailRow'
 import VuetablePagination from './Pagination'
@@ -66,7 +67,8 @@ methods: {
     },
     showVehicles(identificador){
 
-        location.href="/vehicles";
+        location.href="/showVehicles/"+identificador;
+        EvenBus.$emit('show-vehicles',identificador)
         console.log(identificador)
 
     },
@@ -86,8 +88,31 @@ methods: {
     },
     onChangePage (page) {
       this.$refs.vuetable.changePage(page)
+    },
+    onDelete(id,index){
+        swal({
+          title: "Esta seguro de eliminarlo?",
+          text: "Al eliminar este elemento puede afectar al comportamiento del portal",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+              axios.delete(this.route+'/'+ id)
+              .then(function(res){
+                  console.log(res);
+                  EvenBus.$emit('object-del',index)
+              })
+              .catch(function(err){
+                  console.log(err);
+              });
+            swal("Poof! Elemento eliminado!", {
+              icon: "success",
+            });
+          }
+        });
     }
-
 
 
 }

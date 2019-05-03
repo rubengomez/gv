@@ -17,12 +17,12 @@
       <detail-vue-table
           :fields="[
             {name: 'name', title: 'Nombre',dataClass:'text-left'},
-            {name:'mail', title: 'Correo',dataClass:'text-left'},
+            {name:'email', title: 'Correo',dataClass:'text-left'},
             {name: 'tel', title: 'Telefono',dataClass:'text-left'},
             {name:'address', title: 'Direccion',dataClass:'text-left'},
             {name: '__slot:vehicles', title: 'Vehiculos',dataClass:'text-center'},
             {name: '__slot:actions', title: 'Acciones',dataClass:'text-center'}]"
-          :data="this.datos"
+          :data="this.data"
           :route="'/users'">
       </detail-vue-table>
     </div>

@@ -9,7 +9,7 @@
                       Vehiculos</h3>
               </div>
               <div class="col-4">
-                  <a href="/vehicles/create" class="btn btn-outline-primary btn-sm" style="margin-bottom: 1%;">Agregar +</a>
+                  <button class="btn btn-outline-primary btn-sm" style="margin-bottom: 1%;" @click="addVehicle()">Agregar +</button>
                  </div>
           </div>
       </div>
@@ -22,7 +22,6 @@
             {name:'plate_number', title: 'Placa',dataClass:'text-left'},
             {name: 'folio_circulation', title: 'T.Circulacion',dataClass:'text-left'},
             {name:'capacity', title: 'Capacidad',dataClass:'text-left'},
-            {name: 'axes_id', title: 'Ejes',dataClass:'text-left'},
             {name: '__slot:actions', title: 'Acciones',dataClass:'text-left'}]"
           :data="this.data"
           :route="'/vehicles'">
@@ -37,12 +36,36 @@ import DetailVueTable from './DetailVueTableComponent'
 
 export default {
   name: 'app',
+  data(){
+      return{
+          datos2:'',
+          clienteId:'0',
+      }
+  },
   props: {
       data: Array,
   },
   components: {
     DetailVueTable
 },
+created(){
+    EvenBus.$on("show-vehicles", data => {
+        console.log(data);
+    })
+    EvenBus.$on("object-del", index => {
+      this.data.splice(index, 1);
+    });
+    },
+    methods:{
+        save(){
+            console.log("presionado");
+            location.href="/agenda";
+        },
+        addVehicle(){
+            var ruta = '/addVehicle/'+this.data[0].user_id;
+            location.href=ruta;
+        }
+    }
 /*created(){
     EvenBus.$on('role-added', data => {
         this.data.push(data)

@@ -12,7 +12,7 @@
       <div class="row justify-content-between">
         <div class="col-4">
           <h3 class="text-left">
-            <i class="icon ion-md-people"></i>
+            <i class="fas fa-users"></i>
             Roles
           </h3>
         </div>

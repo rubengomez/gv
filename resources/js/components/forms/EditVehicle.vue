@@ -5,10 +5,9 @@
         <div id="desc_form">
           <div class="container">
             <div class="row justify-content-between">
-              <h3 class="text-left">
-                <i class="fas fa-car"></i>
-                Editar Vehiculo
-              </h3>
+                <h3 class="text-left"  v-if="this.vehicle.id==null"><i class="fas fa-car"></i>Agregar Vehiculo</h3>
+                <h3 class="text-left"  v-else-if="this.onlyshow=='disabled'"><i class="fas fa-car"></i>Detalle del Vehiculo</h3>
+                <h3 class="text-left"  v-else><i class="fas fa-car"></i>Editar Vehiculo</h3>
             </div>
           </div>
         </div>
@@ -18,58 +17,76 @@
     <div iv class="row lpad">
       <div class="col-md-4">
         <label for="empresa">Empresa</label>
-        <input type="text" class="form-control" v-model="vehicle.empresa">
+        <select disabled class="form-control" id="serv" v-model="vehicle.user_id">
+          <option v-for="cliente in clientes" v-bind:value="cliente.id">{{ cliente.name }}</option>
+        </select>
       </div>
       <div class="col-md-4">
         <label for="brand">Marca</label>
-        <input type="text" class="form-control" id="brand" v-model="vehicle.brand">
+        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="brand" v-model="vehicle.brand" disabled>
+        <input v-else type="text" class="form-control" id="brand" v-model="vehicle.brand">
       </div>
       <div class="col-md-4">
         <label for="model">Modelo</label>
-        <input type="text" class="form-control" id="model" v-model="vehicle.model">
+        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="model" v-model="vehicle.model" disabled>
+        <input v-else type="text" class="form-control" id="model" v-model="vehicle.model">
       </div>
     </div>
     <div iv class="row lpad">
       <div class="col-md-4">
         <label for="series">Serie</label>
-        <input type="text" class="form-control" id="series" v-model="vehicle.series">
+        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="series" v-model="vehicle.series" disabled>
+        <input v-else type="text" class="form-control" id="series" v-model="vehicle.series">
       </div>
       <div class="col-md-4">
         <label for="placa2">Placa</label>
-        <input type="text" class="form-control" id="placa2" v-model="vehicle.plate_number">
+        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="placa2" v-model="vehicle.plate_number" disabled>
+        <input v-else type="text" class="form-control" id="placa2" v-model="vehicle.plate_number">
       </div>
       <div class="col-md-4">
         <label for="tcirc">T.Circulacion</label>
-        <input type="text" class="form-control" id="tcirc" v-model="vehicle.folio_circulation">
+        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="tcirc" v-model="vehicle.folio_circulation" disabled>
+        <input v-else type="text" class="form-control" id="tcirc" v-model="vehicle.folio_circulation">
       </div>
     </div>
     <div iv class="row lpad">
       <div class="col-md">
         <label for="capacidad">Capacidad</label>
-        <input type="text" class="form-control" id="capacidad" v-model="vehicle.capacity">
+        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="capacidad" v-model="vehicle.capacity" disabled>
+        <input v-else type="text" class="form-control" id="capacidad" v-model="vehicle.capacity">
       </div>
       <div class="col-md">
         <label for="motor1">Motor</label>
-        <select class="form-control" id="motor1" v-model="vehicle.engine_id">
+        <select v-if="this.onlyshow=='disabled'" class="form-control" id="motor1" v-model="vehicle.engine_id" disabled>
+          <option v-for="moto in smotor" v-bind:value="moto.id">{{ moto.name }}</option>
+        </select>
+        <select v-else class="form-control" id="motor1" v-model="vehicle.engine_id">
           <option v-for="moto in smotor" v-bind:value="moto.id">{{ moto.name }}</option>
         </select>
       </div>
       <div class="col-md">
         <label for="ejes">Ejes</label>
-        <select class="form-control" id="ejes" v-model="vehicle.axes_id">
+        <select v-if="this.onlyshow=='disabled'"  disabled class="form-control" id="ejes" v-model="vehicle.axes_id">
+          <option v-for="eje in sejes" v-bind:value="eje.id">{{ eje.name }}</option>
+        </select>
+        <select v-else class="form-control" id="ejes" v-model="vehicle.axes_id">
           <option v-for="eje in sejes" v-bind:value="eje.id">{{ eje.name }}</option>
         </select>
       </div>
       <div class="col-md">
         <label for="serv">Servicios</label>
-        <select class="form-control" id="serv" v-model="vehicle.service_id">
+        <select v-if="this.onlyshow=='disabled'" disabled class="form-control" id="serv" v-model="vehicle.service_id">
+          <option v-for="serv in sserv" v-bind:value="serv.id">{{ serv.name }}</option>
+        </select>
+        <select v-else class="form-control" id="serv" v-model="vehicle.service_id">
           <option v-for="serv in sserv" v-bind:value="serv.id">{{ serv.name }}</option>
         </select>
       </div>
     </div>
     <div iv class="row justify-content-center">
       <div class="col-md-4">
-        <a class="btn btn-guarda btn-outline-primary btn-lg">Guardar</a>
+        <button v-if="this.onlyshow!='disabled'" @click="save()" class="btn btn-outline-primary btn-md btn-guardar">Guardar</button>
+        <button class="btn btn-outline-danger btn-md btn-guardar">Cancelar</button>
       </div>
     </div>
   </div>
@@ -77,10 +94,12 @@
 
 <script>
 import EvenBus from "../../even-bus";
+import swal from 'sweetalert';
 export default {
   data() {
     return {
       vehicle: {
+        id:null,
         empresa: "emp",
         brand: "",
         model: "",
@@ -88,22 +107,33 @@ export default {
         plate_number: "",
         folio_circulation: "",
         capacity: "",
+        user_id:"",
         engine_id: "",
         axes_id: "",
         service_id: ""
       },
-
+      clientes:[],
       smotor: [],
       sejes: [],
       sserv: []
     };
   },
   props: {
-    data: Array
+    data: Object,
+    onlyshow: String,
+    cliente: Number
   },
   created() {
     this.vehicle = Object.assign({}, this.data);
-
+    if (this.cliente != null) {
+        this.vehicle.user_id = this.cliente;
+    }
+    axios
+      .get("/users")
+      .then(res => (this.clientes = res.data))
+      .catch(function(err) {
+        console.log(err);
+      });
     axios
       .get("/axes")
       .then(res => (this.sejes = res.data))
@@ -122,6 +152,53 @@ export default {
       .catch(function(err) {
         console.log(err);
       });
+  },
+  methods:{
+      save(){
+          if (this.vehicle.id==null) {
+              axios
+                .post("/vehicles", {
+                  brand: this.vehicle.brand,
+                  model: this.vehicle.model,
+                  series: this.vehicle.series,
+                  plate_number: this.vehicle.plate_number,
+                  folio_circulation: this.vehicle.folio_circulation,
+                  capacity: this.vehicle.capacity,
+                  axes_id: this.vehicle.axes_id,
+                  engine_id: this.vehicle.engine_id,
+                  service_id: this.vehicle.service_id,
+                  user_id: this.vehicle.user_id
+                })
+                .then(function(res) {
+                        var ruta = '/showVehicles/'+res.data.vehicle.user_id;
+                        location.href=ruta;
+                })
+                .catch(function(err) {
+                  console.log(err);
+                });
+          }else {
+              axios
+                .put("/vehicles/" + this.vehicle.id, {
+                    brand: this.vehicle.brand,
+                    model: this.vehicle.model,
+                    series: this.vehicle.series,
+                    plate_number: this.vehicle.plate_number,
+                    folio_circulation: this.vehicle.folio_circulation,
+                    capacity: this.vehicle.capacity,
+                    axes_id: this.vehicle.axes_id,
+                    engine_id: this.vehicle.engine_id,
+                    service_id: this.vehicle.service_id,
+                    user_id: this.vehicle.user_id
+                })
+                .then(function(res) {
+                    var ruta = '/showVehicles/'+res.data.vehicle.user_id;
+                    location.href=ruta;
+                })
+                .catch(function(err) {
+                  console.log(err);
+                });
+          }
+      }
   }
 };
 </script>
@@ -134,8 +211,8 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-.btn-guarda {
-  padding: 5%;
+.btn-guardar {
+
   margin-top: 5%;
 }
 .lpad {

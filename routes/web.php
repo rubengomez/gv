@@ -37,9 +37,12 @@ Route::resource('axes', 'AxesController');
 Route::resource('engines', 'EngineController');
 Route::resource('roles', 'RoleController');
 Route::resource('tests', 'TestsController');
-Route::resource('vehicles', 'VehicleController');
 Route::resource('rejects', 'RejectionController');
 Route::resource('verify', 'VerificationController');
+
+Route::resource('vehicles', 'VehicleController');
+Route::get('showVehicles/{id}', 'VehicleController@showVehicles');
+Route::get('addVehicle/{id}', 'VehicleController@addVehicle');
 
 Auth::routes();
 

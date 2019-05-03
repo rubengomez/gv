@@ -5,5 +5,5 @@
 <vehicle-table
 :data="{{ $vehicle }}">
 </vehicle-table>
-             
+
 @endsection

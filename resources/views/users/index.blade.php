@@ -2,5 +2,7 @@
 @section('title' , 'Usuarios')
 
 @section('content')
-    <users-table></users-table>
+    <users-table
+        :data="{{ $clientes }}">
+    </users-table>
 @endsection

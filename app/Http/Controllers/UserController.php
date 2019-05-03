@@ -2,6 +2,7 @@
 
 namespace Garro\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,10 +12,18 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        return view("users.index");
+        $clientes = DB::table('role_user')
+                    ->where('role_id', '=', '3')
+                    ->join('users', 'role_user.user_id', '=', 'users.id')
+                    ->select('users.email','users.id','users.name')
+                    ->get();
+        if ($request->ajax()) {
+            return response()->json($clientes,200);
+        }else{
+             return view('users.index', compact('clientes'));
+        }
     }
 
     /**

@@ -1,6 +1,13 @@
 <template>
     <div class="container">
-        <vue-cal :time="false" hide-weekends></vue-cal>
+        <vue-cal style="height: 500px"
+            default-view="month"
+            :locale="'es'"
+            :time-from="8 * 60"
+            :time-to="19 * 60"
+            :disable-views="['years']"
+            :events="events"
+        ></vue-cal>
     </div>
 </template>
 
@@ -16,7 +23,37 @@ data(){
         checked2:false,
         selected:'',
         message:'',
-        message2:''
+        message2:'',
+        events: [
+    {
+      start: '2019-04-18 14:00',
+      end: '2019-04-18 15:00',
+      title: 'Verificacion1.2',
+      content: '<i class="v-icon material-icons">shopping_cart</i>',
+      class: 'leisure'
+    },
+    {
+      start: '2019-04-18 14:00',
+      end: '2019-04-18 15:00',
+      title: 'Verificacion1.2',
+      content: '<i class="v-icon material-icons">shopping_cart</i>',
+      class: 'leisure'
+    },
+    {
+      start: '2019-04-18 16:00',
+      end: '2019-04-18 16:30',
+      title: 'Verifiacion 2',
+      content: '<i class="v-icon material-icons">golf_course</i>',
+      class: 'sport'
+    },
+    {
+      start: '2019-04-19 12:00',
+      end: '2019-04-19 14:00',
+      title: 'Verificacion 3',
+      content: '<i class="v-icon material-icons">cake</i>',
+      class: 'Big'
+    }
+  ]
     }
 }
 }
@@ -24,6 +61,7 @@ data(){
 
 <style>
 .vuecal__menu, .vuecal__cell-events-count {background-color: #6cb2eb;}
+.vuecal__cell--has-events {background-color: #fffacd;}
 .vuecal__menu li {border-bottom-color: #fff;color: #fff;}
 .vuecal__menu li.active {background-color: rgba(255, 255, 255, 0.15);}
 .vuecal__title {background-color: #dbf5fe;}
