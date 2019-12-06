@@ -1,8 +1,8 @@
 <?php
 
-namespace Garro\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Garro\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 
 class pruebaController extends Controller
 {

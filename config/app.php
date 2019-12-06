@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        Garro\Providers\AppServiceProvider::class,
-        Garro\Providers\AuthServiceProvider::class,
-        // Garro\Providers\BroadcastServiceProvider::class,
-        Garro\Providers\EventServiceProvider::class,
-        Garro\Providers\RouteServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
 
     ],
 

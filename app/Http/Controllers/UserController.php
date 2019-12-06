@@ -1,10 +1,10 @@
 <?php
 
-namespace Garro\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Garro\User;
+use App\User;
 
 class UserController extends Controller
 {

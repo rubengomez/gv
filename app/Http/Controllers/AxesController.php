@@ -1,8 +1,8 @@
 <?php
 
-namespace Garro\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Garro\Axes;
+use App\Axes;
 use Illuminate\Http\Request;
 
 class AxesController extends Controller

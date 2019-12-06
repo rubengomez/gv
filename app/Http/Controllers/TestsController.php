@@ -1,7 +1,7 @@
 <?php
 
-namespace Garro\Http\Controllers;
-use Garro\Test;
+namespace App\Http\Controllers;
+use App\Test;
 use Illuminate\Http\Request;
 
 

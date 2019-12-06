@@ -1,7 +1,7 @@
 <?php
 
-namespace Garro\Http\Controllers;
-use Garro\Verification;
+namespace App\Http\Controllers;
+use App\Verification;
 use Illuminate\Http\Request;
 
 class VerificationController extends Controller

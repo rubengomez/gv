@@ -1,10 +1,10 @@
 <?php
 
-namespace Garro\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Garro\Service;
+use App\Service;
 use Illuminate\Http\Request;
-use Garro\Http\Requests\StoreServiceRequest;
+use App\Http\Requests\StoreServiceRequest;
 
 class ServiceController extends Controller
 {

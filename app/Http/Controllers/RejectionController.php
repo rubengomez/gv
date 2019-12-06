@@ -1,7 +1,7 @@
 <?php
 
-namespace Garro\Http\Controllers;
-use Garro\Rejection;
+namespace App\Http\Controllers;
+use App\Rejection;
 use Illuminate\Http\Request;
 
 class RejectionController extends Controller
