@@ -31,6 +31,7 @@ Vue.component('add-role-modal', require('./components/modal/AddRoleModal.vue').d
 Vue.component('data-modal', require('./components/modal/DataModalComponent.vue').default);
 //CALENDAR
 Vue.component('calendar-component', require('./components/calendar/CalendarComponent.vue').default);
+Vue.component('algoritmo-component', require('./components/calendar/AlgoritmoComponent.vue').default);
 //TABLES
 Vue.component('table-component', require('./components/table.vue').default);
 Vue.component('roles-table', require('./components/table/RolesTable.vue').default);
@@ -46,6 +47,10 @@ Vue.component('users-table', require('./components/table/UsersTable.vue').defaul
 Vue.component('addvehicle-form', require('./components/forms/AddVehicle.vue').default);
 Vue.component('editvehicle-form', require('./components/forms/EditVehicle.vue').default);
 Vue.component('showvehicle-form', require('./components/forms/ShowVehicle.vue').default);
+Vue.component('add-cliente', require('./components/forms/AddCliente.vue').default);
+
+Vue.component('fisico-report', require('./components/reports/FisicoReport.vue').default);
+Vue.component('emission-report', require('./components/reports/EmissionReport.vue').default);
 
 Vue.component('addverifica-form', require('./components/forms/AddVerification.vue').default);
 /**

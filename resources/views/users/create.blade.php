@@ -2,9 +2,10 @@
 @section('title' , 'Usuarios')
 
 @section('content')
-    <div class="container">
+    <add-cliente></add-cliente>
+    <!--div class="container">
         <form class="form-group" action="/users" method="post">
-            @csrf
+
             <div class="row">
                 <div class="form-group">
                     <label>Nombre</label>
@@ -27,5 +28,5 @@
             </div>
             <button type="submit" name="button" class="btn btn-primary">Guardar</button>
         </form>
-    </div>
+    </div-->
 @endsection

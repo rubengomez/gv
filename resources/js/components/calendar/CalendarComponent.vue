@@ -26,31 +26,31 @@ data(){
         message2:'',
         events: [
     {
-      start: '2019-04-18 14:00',
-      end: '2019-04-18 15:00',
+      start: '2019-05-14 14:00',
+      end: '2019-05-14 15:00',
       title: 'Verificacion1.2',
       content: '<i class="v-icon material-icons">shopping_cart</i>',
       class: 'leisure'
     },
     {
-      start: '2019-04-18 14:00',
-      end: '2019-04-18 15:00',
+      start: '2019-05-14 14:00',
+      end: '2019-05-14 15:00',
       title: 'Verificacion1.2',
       content: '<i class="v-icon material-icons">shopping_cart</i>',
       class: 'leisure'
     },
     {
-      start: '2019-04-18 16:00',
-      end: '2019-04-18 16:30',
+      start: '2019-05-15 16:00',
+      end: '2019-05-15 16:30',
       title: 'Verifiacion 2',
       content: '<i class="v-icon material-icons">golf_course</i>',
       class: 'sport'
     },
     {
-      start: '2019-04-19 12:00',
-      end: '2019-04-19 14:00',
+      start: '2019-05-17 12:00',
+      end: '2019-05-17 14:00',
       title: 'Verificacion 3',
-      content: '<i class="v-icon material-icons">cake</i>',
+      content: '<i class="v-icon material-icons">Carro</i>',
       class: 'Big'
     }
   ]

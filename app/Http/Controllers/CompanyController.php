@@ -2,29 +2,18 @@
 
 namespace Garro\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Garro\User;
 
-class UserController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $clientes = DB::table('role_user')
-                    ->where('role_id', '=', '3')
-                    ->join('users', 'role_user.user_id', '=', 'users.id')
-                    ->select('users.email','users.id','users.name')
-                    ->get();
-        if ($request->ajax()) {
-            return response()->json($clientes,200);
-        }else{
-             return view('users.index', compact('clientes'));
-        }
+        //
     }
 
     /**
@@ -34,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        //
     }
 
     /**
@@ -45,7 +34,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        //
     }
 
     /**
@@ -56,8 +45,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $vehicle = User::find($id);
-        return view('users.show',compact('vehicle'));
+        //
     }
 
     /**
@@ -68,8 +56,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $vehicle = User::find($id);
-        return view('vehicles.edit',compact('vehicle'));
+        //
     }
 
     /**

@@ -16,7 +16,7 @@
         <addverifica-form></addverifica-form>
     </div>
     <div v-if="activetab === 2" class="tabcontent">
-        Contruccion...
+        Cargando...
     </div>
 </div>
 

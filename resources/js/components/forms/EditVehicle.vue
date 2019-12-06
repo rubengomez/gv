@@ -1,5 +1,10 @@
 <template>
   <div class="container" id="editVehicle">
+      <div class="row align-items-start">
+         <div class="col-3">
+              <h4 @click='goBack()' style="color: #023297;"><i class="fas fa-chevron-left"></i>Vehiculos</h4>
+          </div>
+      </div>
     <div class="row">
       <div class="col">
         <div id="desc_form">
@@ -99,6 +104,7 @@ export default {
   data() {
     return {
       vehicle: {
+        backRuta: 'showVehicles/5',
         id:null,
         empresa: "emp",
         brand: "",
@@ -198,6 +204,9 @@ export default {
                   console.log(err);
                 });
           }
+      },
+      goBack(){
+          location.href="/showVehicles/"+this.vehicle.user_id;
       }
   }
 };

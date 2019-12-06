@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('welcome');
 });
 
 Route::get('/login', function () {
@@ -21,6 +21,10 @@ Route::get('/login', function () {
 
 Route::get('/mi_primer_ruta', function(){
     return view('engines.index');
+});
+
+Route::get('/algoritmo', function(){
+    return view('calendar.algoritmo');
 });
 
 Route::get('/name/{name}', function($name){
@@ -43,6 +47,9 @@ Route::resource('verify', 'VerificationController');
 Route::resource('vehicles', 'VehicleController');
 Route::get('showVehicles/{id}', 'VehicleController@showVehicles');
 Route::get('addVehicle/{id}', 'VehicleController@addVehicle');
+
+Route::get('fisico', 'fisicoReportController@mensual');
+Route::get('emissions', 'EmissionReportController@mensual');
 
 Auth::routes();
 

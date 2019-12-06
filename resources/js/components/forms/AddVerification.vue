@@ -83,7 +83,7 @@
       <div class="col-md-4">
         <label for="rfc">RFC</label>
 
-        <input type="text" class="form-control" id="rfc" placeholder="RFC" v-model="rfc">
+        <input type="text" class="form-control" id="rfc" @change='searchRFC()' placeholder="RFC" v-model="rfc">
       </div>
       <div class="col-md-8">
         <label for="nrsocial">Nombre o Razón Social</label>
@@ -233,6 +233,8 @@
 export default {
   data() {
     return {
+        empresa:[],
+        vehicle:[],
       aproba: "",
       acredita: "",
       semeste: "",
@@ -268,6 +270,19 @@ export default {
       .catch(function(err) {
         console.log(err);
       });
+  },
+  methods:{
+      searchRFC(){
+          if (this.rfc) {
+              swal('cambio:'+ this.rfc);
+              axios
+                .get("/users/4")
+                .then(res => (this.empresa = res.data))
+                .catch(function(err) {
+                  console.log(err);
+                });
+          }
+      }
   }
 };
 </script>

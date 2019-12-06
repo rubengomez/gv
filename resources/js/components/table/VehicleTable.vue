@@ -2,6 +2,11 @@
   <div id="table">
       <!--add-role-modal></add-role-modal-->
       <div class="container">
+          <div class="row align-items-start">
+             <div class="col-3">
+                  <a href="/users" class="goBack"><i class="fas fa-chevron-left"></i>Clientes</a>
+              </div>
+          </div>
           <div class="row justify-content-between">
               <div class="col-4">
                   <h3 class="text-left">
@@ -94,5 +99,12 @@ created(){
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.goBack{
+    font-size: 1.35rem;
+    color: #023297;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
 }
 </style>

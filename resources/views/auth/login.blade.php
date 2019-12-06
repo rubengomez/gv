@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container"   background="img/fondo.jpg">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card card2" style="background-color: #cfd4dac9;">
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
+                        <img src="img/garro.png" style="width: 20%; margin-bottom: 5%;" alt="">
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -71,3 +71,12 @@
     </div>
 </div>
 @endsection
+<style media="screen">
+body {
+background-image: url("img/fondo.jpg");
+background-size: cover;
+}
+.card2 {
+    background-color: #cfd4dac9;
+}
+</style>

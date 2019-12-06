@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Garro') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,7 +24,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/home') }}">
+                <img src="http://127.0.0.1:8000/img/garro.png" style="width: 3%; margin-right: 1%" alt="">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('Garro', 'Garro') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -44,11 +45,13 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            @if (Route::has('register'))
+                            <!--
+                            @ if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @ endif
+                            -->
                         @else
 
                         <li class="nav-item">
@@ -60,25 +63,33 @@
                         <li class="nav-item">
                              <a class="nav-link" href="/verify">{{ __('Formularios') }}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('Reportes') }}</a>
-                        </li>
-
-
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Reportes <span class="caret"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a style="margin-left: 5%;font-weight: 600;">{{ __('Fisico Mecanica') }}</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/fisico">{{ __('Reporte Mensual') }}</a>
+                                <a style="margin-left: 5%;font-weight: 600;">{{ __('Emisiones') }}</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/emissions">{{ __('Reporte Semestral') }}</a>
+                                <a class="dropdown-item" href="/emissions">{{ __('Desgloce') }}</a>
+                            </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Configuraciones <span class="caret"></span>
                             </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/axes">{{ __('Ejes') }}</a>
-                            <a class="dropdown-item" href="/engines">{{ __('Motores') }}</a>
-                            <a class="dropdown-item" href="/tests">{{ __('Pruebas') }}</a>
-                            <a class="dropdown-item" href="/rejects">{{ __('Rechazos') }}</a>
-                            <a class="dropdown-item" href="/roles">{{ __('Roles') }}</a>
-                            <a class="dropdown-item" href="/services">{{ __('Servicios') }}</a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/axes">{{ __('Ejes') }}</a>
+                                <a class="dropdown-item" href="/engines">{{ __('Motores') }}</a>
+                                <a class="dropdown-item" href="/tests">{{ __('Pruebas') }}</a>
+                                <a class="dropdown-item" href="/rejects">{{ __('Rechazos') }}</a>
+                                <a class="dropdown-item" href="/roles">{{ __('Roles') }}</a>
+                                <a class="dropdown-item" href="/services">{{ __('Servicios') }}</a>
                             </div>
-
+                        </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -108,3 +119,11 @@
     </div>
 </body>
 </html>
+<style media="screen">
+.navbar-light .navbar-nav .nav-link {
+color: #00349a;
+}
+.navbar-light .navbar-brand {
+    color: rgb(1, 51, 152);
+}
+</style>
