@@ -2,7 +2,7 @@
 @section('title' , 'Vehiculos')
 
 @section('content')
-    <add-user
-        :data="{{ $user }}">
-    </add-user>
+    <add-cliente
+        :data="{{ $customer }}">
+    </add-cliente>
 @endsection

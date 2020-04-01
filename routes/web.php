@@ -36,6 +36,7 @@ Route::get('/agenda', function(){
 });
 
 Route::resource('users', 'UserController');
+Route::resource('customers', 'CompanyController');
 Route::resource('services', 'ServiceController');
 Route::resource('axes', 'AxesController');
 Route::resource('engines', 'EngineController');

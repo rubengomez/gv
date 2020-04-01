@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Garro\Test;
+use App\Test;
 
 class TestTableSeeder extends Seeder
 {

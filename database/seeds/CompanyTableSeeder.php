@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Garro\Company;
+use App\Company;
 
 class CompanyTableSeeder extends Seeder
 {

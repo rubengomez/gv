@@ -2,8 +2,8 @@
 @section('title' , 'Muesta Vehiculos')
 
 @section('content')
-    <add-cliente
-        :data="{{ $vehicle }}"
+    <add-user
+        :data="{{ $user }}"
         :onlyshow="'disabled'">
-    </add-cliente>
+    </add-user>
 @endsection

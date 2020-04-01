@@ -4,7 +4,7 @@
       <div class="container">
           <div class="row align-items-start">
              <div class="col-3">
-                  <a href="/users" class="goBack"><i class="fas fa-chevron-left"></i>Clientes</a>
+                  <a href="/customers" class="goBack"><i class="fas fa-chevron-left"></i>Clientes</a>
               </div>
           </div>
           <div class="row justify-content-between">

@@ -10,8 +10,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    public function roles(){
-        return $this->belongsToMany('App\Role');
+    public function role(){
+        return $this->belongsTo('App\Role');
     }
 
     public function authorizeRoles($roles){

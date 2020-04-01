@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Garro\Axes;
+use App\Axes;
 
 class AxesTableSeeder extends Seeder
 {
