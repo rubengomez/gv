@@ -1,8 +1,8 @@
 <?php
 
-namespace Garro\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Garro\Engine;
+use App\Engine;
 use Illuminate\Http\Request;
 
 class EngineController extends Controller

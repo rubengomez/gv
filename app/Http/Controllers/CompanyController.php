@@ -1,8 +1,11 @@
 <?php
 
-namespace Garro\Http\Controllers;
+namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\User;
+use App\Company;
 
 class CompanyController extends Controller
 {
@@ -11,9 +14,16 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $customers = User::where('role_id', '=', '2')
+            ->select('users.email','users.id','users.name')
+            ->get();
+        if ($request->ajax()) {
+            return response()->json($customers,200);
+        }else{
+             return view('companies.index', compact('customers'));
+        }
     }
 
     /**
@@ -23,7 +33,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('customers.create');
     }
 
     /**
@@ -45,7 +55,10 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        $customer = User::select('companies.*','users.email','users.id','users.name')
+            ->join('companies', 'users.id', '=', 'companies.user_id')
+            ->find($id);
+        return view('companies.show',compact('customer'));
     }
 
     /**
@@ -56,7 +69,10 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customer = User::select('companies.*','users.email','users.id','users.name')
+            ->join('companies', 'users.id', '=', 'companies.user_id')
+            ->find($id);
+        return view('companies.edit',compact('customer'));
     }
 
     /**

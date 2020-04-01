@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Garro\Rejection;
+use App\Rejection;
 
 class RejectionsTableSeeder extends Seeder
 {

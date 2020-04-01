@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Garro\Vehicle;
-use Garro\User;
-use Garro\Axes;
-use Garro\Engine;
-use Garro\Service;
+use App\Vehicle;
+use App\User;
+use App\Axes;
+use App\Engine;
+use App\Service;
 
 class VehicleTableSeeder extends Seeder
 {

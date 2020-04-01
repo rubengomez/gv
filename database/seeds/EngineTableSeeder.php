@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Garro\Engine;
+use App\Engine;
 
 class EngineTableSeeder extends Seeder
 {

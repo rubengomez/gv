@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Garro\Service;
+use App\Service;
 
 class ServiceTableSeeder extends Seeder
 {

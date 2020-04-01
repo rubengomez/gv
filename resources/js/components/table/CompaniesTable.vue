@@ -6,7 +6,7 @@
               <div class="col-4">
                   <h3 class="text-left">
                       <i class="fas fa-user"></i>
-                      Usuarios</h3>
+                      Clientes</h3>
               </div>
               <div class="col-4">
                   <a href="/users/create" class="btn btn-outline-primary btn-sm" style="margin-bottom: 1%;">Agregar +</a>
@@ -18,9 +18,13 @@
           :fields="[
             {name: 'name', title: 'Nombre',dataClass:'text-left'},
             {name:'email', title: 'Correo',dataClass:'text-left'},
+            {name: 'tel', title: 'Telefono',dataClass:'text-left'},
+            {name:'address', title: 'Direccion',dataClass:'text-left'},
+            {name: '__slot:vehicles', title: 'Vehiculos',dataClass:'text-center'},
             {name: '__slot:actions', title: 'Acciones',dataClass:'text-center'}]"
           :data="this.data"
-          :route="'/users'">
+          :route="'/customers'">
+          <!--ROUTE PARA ACTIONS BUTTON  -->
       </detail-vue-table>
     </div>
   </div>

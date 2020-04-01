@@ -42,12 +42,14 @@ Vue.component('tests-table', require('./components/table/TestsTable.vue').defaul
 Vue.component('rejections-table', require('./components/table/RejectionsTable.vue').default);
 Vue.component('vehicle-table', require('./components/table/VehicleTable.vue').default);
 Vue.component('users-table', require('./components/table/UsersTable.vue').default);
+Vue.component('companies-table', require('./components/table/CompaniesTable.vue').default);
 
 //FORMS
 Vue.component('addvehicle-form', require('./components/forms/AddVehicle.vue').default);
 Vue.component('editvehicle-form', require('./components/forms/EditVehicle.vue').default);
 Vue.component('showvehicle-form', require('./components/forms/ShowVehicle.vue').default);
-Vue.component('add-cliente', require('./components/forms/AddCliente.vue').default);
+Vue.component('add-cliente', require('./components/forms/AddCompany.vue').default);
+Vue.component('add-user', require('./components/forms/AddUser.vue').default);
 
 Vue.component('fisico-report', require('./components/reports/FisicoReport.vue').default);
 Vue.component('emission-report', require('./components/reports/EmissionReport.vue').default);

@@ -1,6 +1,6 @@
 <?php
 
-namespace Garro;
+namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -10,8 +10,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    public function roles(){
-        return $this->belongsToMany('Garro\Role');
+    public function role(){
+        return $this->belongsTo('App\Role');
     }
 
     public function authorizeRoles($roles){

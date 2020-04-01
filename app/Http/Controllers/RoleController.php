@@ -1,9 +1,9 @@
 <?php
 
-namespace Garro\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Garro\Role;
+use App\Role;
 
 class RoleController extends Controller
 {

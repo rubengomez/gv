@@ -1,7 +1,7 @@
 <?php
 
-namespace Garro\Http\Controllers;
-use Garro\Vehicle;
+namespace App\Http\Controllers;
+use App\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

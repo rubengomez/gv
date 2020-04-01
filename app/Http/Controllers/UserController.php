@@ -1,10 +1,11 @@
 <?php
 
-namespace Garro\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Garro\User;
+use Illuminate\Support\Facades\Hash;
+use App\User;
 
 class UserController extends Controller
 {
@@ -15,15 +16,13 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $clientes = DB::table('role_user')
-                    ->where('role_id', '=', '3')
-                    ->join('users', 'role_user.user_id', '=', 'users.id')
-                    ->select('users.email','users.id','users.name')
-                    ->get();
+        $users = User::where('role_id', '=', '1')
+            ->select('users.email','users.id','users.name')
+            ->get();
         if ($request->ajax()) {
-            return response()->json($clientes,200);
+            return response()->json($users,200);
         }else{
-             return view('users.index', compact('clientes'));
+             return view('users.index', compact('users'));
         }
     }
 
@@ -45,7 +44,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        // return User::create([
+        //     'name' => $request->input('name'),
+        //     'email' => $request->input('email'),
+        //     'password' => Hash::make($request->input('password'))
+        // ]);
+        if ($request->ajax()) {
+            $user = new User();
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->password = Hash::make($request->input('password'));
+            $user->role_id = 1;
+            $user->save();
+
+            return response()->json([
+                "message" => "Usuario Creado Correctamente.",
+                "user" =>$user
+            ],200);
+        }
     }
 
     /**
@@ -56,8 +72,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $vehicle = User::find($id);
-        return view('users.show',compact('vehicle'));
+        $user = User::find($id);
+        return view('users.show',compact('user'));
     }
 
     /**
@@ -68,8 +84,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $vehicle = User::find($id);
-        return view('vehicles.edit',compact('vehicle'));
+        $user = User::find($id);
+        return view('users.edit',compact('user'));
+        //return view('vehicles.edit',compact('vehicle'));
     }
 
     /**
@@ -92,6 +109,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Garro\Role;
+use App\Role;
 
 class RoleTableSeeder extends Seeder
 {

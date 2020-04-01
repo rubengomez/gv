@@ -13,79 +13,58 @@
         </div>
       </div>
     </div>
-    <!-- Columna1/3-->
     <div iv class="row lpad">
       <div class="col-md">
-        <label for="empresa">Nombre</label>
-        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="brand" v-model="cliente.nombre" disabled>
-        <input v-else type="text" class="form-control" id="brand" v-model="cliente.nombre">
+        <label for="empresa">Nombre de la empresa</label>
+        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="nameCompany" v-model="cliente.name" disabled>
+        <input v-else type="text" class="form-control" id="nameCompany" v-model="cliente.name">
       </div>
-      <!--div class="col-md-4">
-        <label for="brand">Marca</label>
-        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="brand" v-model="vehicle.brand" disabled>
-        <input v-else type="text" class="form-control" id="brand" v-model="vehicle.brand">
-      </div>
-      <div class="col-md-4">
-        <label for="model">Modelo</label>
-        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="model" v-model="vehicle.model" disabled>
-        <input v-else type="text" class="form-control" id="model" v-model="vehicle.model">
-    </div-->
     </div>
     <div iv class="row lpad">
       <div class="col-md">
-        <label for="series">Correo</label>
-        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="series" v-model="cliente.correo" disabled>
-        <input v-else type="text" class="form-control" id="series" v-model="cliente.correo">
+        <label for="series">Nombre de Contacto</label>
+        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="nameContact" v-model="cliente.contact" disabled>
+        <input v-else type="text" class="form-control" id="nameContact" v-model="cliente.contact">
       </div>
       <div class="col-md">
         <label for="placa2">Telefono</label>
-        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="placa2" v-model="cliente.telefono" disabled>
-        <input v-else type="text" class="form-control" id="placa2" v-model="cliente.telefono">
+        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="cellphone" v-model="cliente.cellphone" disabled>
+        <input v-else type="text" class="form-control" id="cellphone" v-model="cliente.cellphone">
       </div>
-      <!--div class="col-md-4">
-        <label for="tcirc">T.Circulacion</label>
-        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="tcirc" v-model="vehicle.folio_circulation" disabled>
-        <input v-else type="text" class="form-control" id="tcirc" v-model="vehicle.folio_circulation">
-    </div-->
     </div>
     <div iv class="row lpad">
       <div class="col-md">
         <label for="capacidad">Direccion</label>
-        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="capacidad" v-model="cliente.direccion" disabled>
-        <input v-else type="text" class="form-control" id="capacidad" v-model="cliente.direccion">
-      </div>
-      <!--div class="col-md">
-        <label for="motor1">Motor</label>
-        <select v-if="this.onlyshow=='disabled'" class="form-control" id="motor1" v-model="vehicle.engine_id" disabled>
-          <option v-for="moto in smotor" v-bind:value="moto.id">{{ moto.name }}</option>
-        </select>
-        <select v-else class="form-control" id="motor1" v-model="vehicle.engine_id">
-          <option v-for="moto in smotor" v-bind:value="moto.id">{{ moto.name }}</option>
-        </select>
+        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="address" v-model="cliente.address" disabled>
+        <input v-else type="text" class="form-control" id="address" v-model="cliente.address">
       </div>
       <div class="col-md">
-        <label for="ejes">Ejes</label>
-        <select v-if="this.onlyshow=='disabled'"  disabled class="form-control" id="ejes" v-model="vehicle.axes_id">
-          <option v-for="eje in sejes" v-bind:value="eje.id">{{ eje.name }}</option>
-        </select>
-        <select v-else class="form-control" id="ejes" v-model="vehicle.axes_id">
-          <option v-for="eje in sejes" v-bind:value="eje.id">{{ eje.name }}</option>
-        </select>
+        <label for="motor1">Municipio</label>
+        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="municipality" v-model="cliente.municipality" disabled>
+        <input v-else type="text" class="form-control" id="municipality" v-model="cliente.municipality">
       </div>
       <div class="col-md">
-        <label for="serv">Servicios</label>
-        <select v-if="this.onlyshow=='disabled'" disabled class="form-control" id="serv" v-model="vehicle.service_id">
-          <option v-for="serv in sserv" v-bind:value="serv.id">{{ serv.name }}</option>
-        </select>
-        <select v-else class="form-control" id="serv" v-model="vehicle.service_id">
-          <option v-for="serv in sserv" v-bind:value="serv.id">{{ serv.name }}</option>
-        </select>
-    </div-->
+        <label for="ejes">Estado</label>
+        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="state" v-model="cliente.state" disabled>
+        <input v-else type="text" class="form-control" id="state" v-model="cliente.state">
+      </div>
+      <div class="col-md">
+        <label for="serv">Codigo Postal</label>
+        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="cp" v-model="cliente.cp" disabled>
+        <input v-else type="text" class="form-control" id="cp" v-model="cliente.cp">
     </div>
+    </div>
+    <div iv class="row lpad">
+      <div class="col-md">
+        <label for="series">Correo</label>
+        <input v-if="this.onlyshow=='disabled'" type="text" class="form-control" id="mail" v-model="cliente.email" disabled>
+        <input v-else type="text" class="form-control" id="mail" v-model="cliente.email">
+      </div>
+  </div>
     <div iv class="row justify-content-center">
       <div class="col-md-4">
         <button v-if="this.onlyshow!='disabled'" @click="save()" class="btn btn-outline-primary btn-md btn-guardar">Guardar</button>
-        <button class="btn btn-outline-danger btn-md btn-guardar">Cancelar</button>
+        <button class="btn btn-outline-danger btn-md btn-guardar" @click="cancel()">Cancelar</button>
       </div>
     </div>
   </div>
@@ -189,6 +168,10 @@ export default {
                   console.log(err);
                 });
           }
+      },
+      cancel(){
+          var back = '/customers';
+          location.href=back;
       }
   }
 };

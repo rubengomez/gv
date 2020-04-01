@@ -3,6 +3,6 @@
 
 @section('content')
     <users-table
-        :data="{{ $clientes }}">
+        :data="{{ $users }}">
     </users-table>
 @endsection

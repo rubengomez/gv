@@ -58,7 +58,7 @@
                             <a class="nav-link" href="/agenda">{{ __('Agenda') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/users">{{ __('Clientes') }}</a>
+                            <a class="nav-link" href="/customers">{{ __('Clientes') }}</a>
                         </li>
                         <li class="nav-item">
                              <a class="nav-link" href="/verify">{{ __('Formularios') }}</a>
@@ -86,8 +86,9 @@
                                 <a class="dropdown-item" href="/engines">{{ __('Motores') }}</a>
                                 <a class="dropdown-item" href="/tests">{{ __('Pruebas') }}</a>
                                 <a class="dropdown-item" href="/rejects">{{ __('Rechazos') }}</a>
-                                <a class="dropdown-item" href="/roles">{{ __('Roles') }}</a>
                                 <a class="dropdown-item" href="/services">{{ __('Servicios') }}</a>
+                                <a class="dropdown-item" href="/users">{{ __('Usuarios') }}</a>
+                                <a class="dropdown-item" href="/roles">{{ __('Roles') }}</a>
                             </div>
                         </li>
                             <li class="nav-item dropdown">

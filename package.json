@@ -21,12 +21,12 @@
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0",
         "vue": "^2.6.10",
-        "vue-template-compiler": "^2.6.9",
-        "vuetable-2": "^1.7.5"
+        "vue-template-compiler": "^2.6.9"
     },
     "dependencies": {
         "sweetalert": "^2.1.2",
         "vue-cal": "^1.50.3",
-        "vue-flash-message": "^0.7.2"
+        "vue-flash-message": "^0.7.2",
+        "vuetable-2": "^1.7.5"
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Garro\Verification;
-use Garro\Test;
-use Garro\Vehicle;
-use Garro\User;
-use Garro\Rejection;
+use App\Verification;
+use App\Test;
+use App\Vehicle;
+use App\User;
+use App\Rejection;
 
 class VerificationTableSeeder extends Seeder
 {
